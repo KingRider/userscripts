@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PixLR Editor - Ads Removed
 // @namespace    http://www.sandroalvares.com.br
-// @version      0.2
+// @version      0.21
 // @description  PixLR Editor - Ads Removed
 // @author       Sandro Alvares
 // @match        https://pixlr.com/editor/
@@ -9,9 +9,10 @@
 // ==/UserScript==
 
 (function() {
-	setTimeout(function() {
-		if ($('body').css('padding-right')) {
-			$('body').css('padding-right', 'initial');
-		}
-	}, 1000);
+    $('body').removeProp();
+    setTimeout(function() {
+	if ($('body').css('padding-right')) {
+		$('body').css('padding-right', 'initial');
+	}
+    }, 1000);
 })();
