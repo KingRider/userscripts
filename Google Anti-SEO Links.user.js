@@ -10,6 +10,8 @@
 // @match        http://*.google.com.br/*
 // @exclude      http://docs.google.com/*
 // @exclude      https://docs.google.com/*
+// @exclude      http://mail.google.com/*
+// @exclude      https://mail.google.com/*
 // @require      http://code.jquery.com/jquery-1.9.1.min.js
 // ==/UserScript==
 
