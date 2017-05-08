@@ -1,11 +1,14 @@
 // ==UserScript==
 // @name         YoutubeAudio
 // @namespace    http://sandroalvares.com.br
-// @version      v1.3
+// @version      v1.31
 // @description  Youtube Audio without video
 // @author       KingRider
 // @match        https://*.youtube.com/watch*
 // @match        http://*.youtube.com/watch*
+// @require      http://code.jquery.com/jquery-1.9.1.min.js
+// @updateURL    https://github.com/KingRider/userscripts/raw/master/Google%20Anti-SEO%20Links.user.js
+// @downloadURL  https://github.com/KingRider/userscripts/raw/master/Google%20Anti-SEO%20Links.user.js
 // ==/UserScript==
 
 (function() {
