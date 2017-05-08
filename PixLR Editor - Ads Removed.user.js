@@ -10,9 +10,9 @@
 
 (function() {
     $('body').removeProp();
-    setTimeout(function() {
-	if ($('body').css('padding-right')) {
-		$('body').css('padding-right', 'initial');
-	}
-    }, 1000);
+	setTimeout(function() {
+		if ($('body').css('padding-right')) {
+			$('body').css('padding-right', 'initial');
+		}
+	}, 1000);
 })();

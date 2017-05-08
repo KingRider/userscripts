@@ -6,8 +6,10 @@
 // @author       KingRider
 // @match        http://*.zendesk.com/hc/*
 // @match        https://*.zendesk.com/hc/*
-// @exclude      http://*.zendesk.com/hc/admin/appearance*
-// @exclude      https://*.zendesk.com/hc/admin/appearance*
+// @match        http://taskcenter.mega.com.br/hc/*
+// @match        https://taskcenter.mega.com.br/hc/*
+// @exclude      http://*.zendesk.com/hc/admin/*
+// @exclude      https://*.zendesk.com/hc/admin/*
 // @require      http://code.jquery.com/jquery-1.9.1.min.js
 // ==/UserScript==
 

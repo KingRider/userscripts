@@ -10,19 +10,21 @@
 // @match        http://*.google.com.br/*
 // @exclude      http://docs.google.com/*
 // @exclude      https://docs.google.com/*
-// @exclude      http://mail.google.com/*
-// @exclude      https://mail.google.com/*
+// @exclude      http://mail.google.com
+// @exclude      https://mail.google.com
+// @updateURL    https://github.com/KingRider/userscripts/raw/master/Google%20Anti-SEO%20Links.user.js
+// @downloadURL  https://github.com/KingRider/userscripts/raw/master/Google%20Anti-SEO%20Links.user.js
 // @require      http://code.jquery.com/jquery-1.9.1.min.js
 // ==/UserScript==
 
 
-(function() {
+$(document).ready(function() {
     setInterval(function() {
-        for (x=0; x < document.querySelectorAll('div.g h3 a').length; x++) {
-            document.querySelectorAll('div.g h3 a')[x].removeAttribute('onmousedown');
+        for (antiseo=0; antiseo < document.querySelectorAll('div.g h3 a').length; antiseo++) {
+            document.querySelectorAll('div.g h3 a')[antiseo].removeAttribute('onmousedown');
         }
     }, 500);
-})();
+});
 
 /*
 if ($('div.rc h3.r a').length) {

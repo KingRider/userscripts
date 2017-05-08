@@ -1,36 +1,49 @@
 // ==UserScript==
 // @name         YoutubeAudio
 // @namespace    http://sandroalvares.com.br
-// @version      v1.2
+// @version      v1.3
 // @description  Youtube Audio without video
 // @author       KingRider
 // @match        https://*.youtube.com/watch*
 // @match        http://*.youtube.com/watch*
-// @require      http://code.jquery.com/jquery-1.9.1.min.js
 // ==/UserScript==
 
 (function() {
-    var savideo = document.querySelector('div#player');
-    setTimeout(function() {
-        if (window.getComputedStyle(savideo, null).getPropertyValue('visibility') == 'visible') {
-            //savideo.style.display = 'none'; // Not work!
-            savideo.style.visibility = 'hidden';
-            /*document.querySelector('div.player-api').style.background = 'transparent';
-            document.querySelector('div#placeholder-player').style.height = 0;*/
-            document.getElementById('watch7-container').style.visibility = 'hidden';
-        }
-    }, 500);
+    //(window.getComputedStyle(savideo, null).getPropertyValue('visibility') == 'visible')
+
+    var removervideo = setInterval(function() { satela(); clearInterval(removervideo); }, 1000);
     $(window).bind('keypress', function(e) {
         var code = e.keyCode || e.which;
         var control = e.ctrlKey || e.metaKey;
-        if (code == 17 && control) {
-            if ($('div#player').css('visibility') == 'hidden') {
-                $('div#player').css('visibility', '');
-                $('div#watch7-container').css('visibility', '');
+        if (code == 17 && control) { satela(); }
+    });
+
+    function satela() {
+        var savideo1 = document.querySelectorAll('#player');
+        for (vd1=0;vd1 < savideo1.length; vd1++) {
+            if (savideo1[vd1].style.visibility != 'hidden') {
+                savideo1[vd1].style.visibility = 'hidden';
             } else {
-                $('div#player').css('visibility', 'hidden');
-                $('div#watch7-container').css('visibility', 'hidden');
+                savideo1[vd1].style.visibility = '';
             }
         }
-    });
+        var savideo2 = document.querySelectorAll('#movie_player');
+        for (vd2=0;vd2 < savideo2.length; vd2++) {
+            if (savideo2[vd2].style.visibility != 'hidden') {
+                savideo2[vd2].style.visibility = 'hidden';
+            } else {
+                savideo2[vd2].style.visibility = '';
+            }
+        }
+        if (document.getElementById('related').style.visibility != 'hidden') {
+            document.getElementById('related').style.visibility = 'hidden';
+        } else {
+            document.getElementById('related').style.visibility = '';
+        }
+        /*if (document.getElementById('watch7-container').style.visibility != 'hidden') {
+            document.getElementById('watch7-container').style.visibility = 'hidden';
+        } else {
+            document.getElementById('watch7-container').style.visibility = '';
+        }*/
+    }
 })();
