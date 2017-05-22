@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YoutubeAudio
 // @namespace    http://sandroalvares.com.br
-// @version      v2.0
+// @version      v2.01
 // @description  Youtube Audio without video
 // @author       KingRider
 // @match        https://*.youtube.com/watch*
@@ -26,22 +26,42 @@
 
     //-- HIDE ADS & VIDEO
     function satela() {
-        sahide(document.querySelectorAll('.player-api'));
-        sahide(document.querySelectorAll('#player'));
-        sahide(document.querySelectorAll('#movie_player'));
-        sahide(document.querySelectorAll('div[id*="related"]'));
-        sahide(document.querySelectorAll('div[id*="sidebar-contents"]'));
+        sahide('div[class*="player-api"]'); // Hidden video
+        sahide('div[id*="theater-background"]'); // Hidden background from video
+        sahide('div[id*="sidebar-contents"]'); // Hidden Sidebar near playlist
+
+        /*
+        sahide('div[class^="player"]');
+        //sahide('#movie_player'); // not exist and before version exist
+        sahide('div[id*="related"]');
+        //sahide('div[id^="placeholder-player"]', 1);
+        */
     }
 
     //-- FUNC HIDDEN
-    function sahide(elem) {
-        for (sah=0; sah < elem.length; sah++) {
-            if (elem[sah]) {
-                if (elem[sah].style.visibility != 'hidden') {
-                    elem[sah].style.visibility = 'hidden';
+    function sahide(elem, tipo = 0) {
+        var satipo = '';
+        var saelem = document.querySelectorAll(elem);
+        for (sah=0; sah < saelem.length; sah++) {
+            if (saelem[sah]) {
+                if (tipo === 0) {
+                    if (saelem[sah].style.visibility != 'hidden') {
+                        saelem[sah].style.visibility = 'hidden';
+                        satipo = 'hidden [ON]';
+                    } else {
+                        saelem[sah].style.visibility = '';
+                        satipo = 'hidden [OFF]';
+                    }
                 } else {
-                    elem[sah].style.visibility = '';
+                    if (saelem[sah].style.display != 'none') {
+                        saelem[sah].style.display = 'none';
+                        satipo = 'none [ON]';
+                    } else {
+                        saelem[sah].style.display = '';
+                        satipo = 'none [OFF]';
+                    }
                 }
+                console.log(elem + ' / ' + tipo + ' / ' + satipo);
             } else {
                 console.log("Erro: " + elem);
             }
