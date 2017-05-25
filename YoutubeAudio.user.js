@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YoutubeAudio
 // @namespace    http://sandroalvares.com.br
-// @version      v2.01
+// @version      v2.05
 // @description  Youtube Audio without video
 // @author       KingRider
 // @match        https://*.youtube.com/watch*
@@ -40,6 +40,7 @@
 
     //-- FUNC HIDDEN
     function sahide(elem, tipo = 0) {
+        console.log($('#watch-header').position());
         var satipo = '';
         var saelem = document.querySelectorAll(elem);
         for (sah=0; sah < saelem.length; sah++) {
@@ -67,4 +68,8 @@
             }
         }
     }
+
+    // Auto-Scroll in Title
+    window.scrollTo(0,document.getElementById('watch-header').offsetParent.offsetTop);
+
 })();
