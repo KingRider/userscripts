@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name         YoutubeAudio
 // @namespace    http://sandroalvares.com.br
-// @version      v2.05
+// @version      v2.06
 // @description  Youtube Audio without video
 // @author       KingRider
-// @match        https://*.youtube.com/watch*
 // @match        http://*.youtube.com/watch*
+// @match        https://*.youtube.com/watch*
+// @match        http://*.youtube.com/c/*
+// @match        https://*.youtube.com/c/*
 // @require      http://code.jquery.com/jquery-1.9.1.min.js
 // @updateURL    https://github.com/KingRider/userscripts/raw/master/YoutubeAudio.user.js
 // @downloadURL  https://github.com/KingRider/userscripts/raw/master/YoutubeAudio.user.js
