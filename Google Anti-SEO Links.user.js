@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Google Anti-SEO Links
 // @namespace    http://sandroalvares.com.br
-// @version      v3.0
+// @version      v3.2
 // @description  Anti-SEO
 // @author       KingRider
 // @match        https://*.google.com/*
@@ -24,6 +24,9 @@ $(document).ready(function() {
             document.querySelectorAll('div.g h3 a')[antiseo].removeAttribute('onmousedown');
         }
     }, 500);
+    if (window.location.pathname == "/url" && document.body.innerText.search('Aviso de redirecionamento') === 0) {
+        window.location.href = unescape(window.location.search.replace("?hl=pt-BR&amp;q=", ""));
+    }
 });
 
 /*
