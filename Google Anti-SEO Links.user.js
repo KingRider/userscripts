@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Google Anti-SEO Links
 // @namespace    http://sandroalvares.com.br
-// @version      v3.2
+// @version      v3.21
 // @description  Anti-SEO
 // @author       KingRider
 // @match        https://*.google.com/*
@@ -12,8 +12,10 @@
 // @exclude      https://docs.google.com/*
 // @exclude      http://mail.google.com
 // @exclude      https://mail.google.com
-// @updateURL    https://github.com/KingRider/userscripts/raw/master/Google%20Anti-SEO%20Links.user.js
-// @downloadURL  https://github.com/KingRider/userscripts/raw/master/Google%20Anti-SEO%20Links.user.js
+// @exclude      http://play.google.com
+// @exclude      https://play.google.com
+// @exclude      https://translate.google.com
+// @exclude      https://translate.google.com
 // @require      http://code.jquery.com/jquery-1.9.1.min.js
 // ==/UserScript==
 
