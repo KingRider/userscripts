@@ -18,6 +18,8 @@
 // @exclude      https://play.google.com
 // @exclude      https://translate.google.com
 // @exclude      https://translate.google.com
+// @updateURL    https://github.com/KingRider/userscripts/raw/master/Google%20Anti-SEO%20Links.user.js
+// @downloadURL  https://github.com/KingRider/userscripts/raw/master/Google%20Anti-SEO%20Links.user.js
 // @require      http://code.jquery.com/jquery-1.9.1.min.js
 // ==/UserScript==
 
