@@ -8,6 +8,8 @@
 // @match        http://*.google.com/*
 // @match        https://*.google.com.br/*
 // @match        http://*.google.com.br/*
+// @exclude      http://accounts.google.com/*
+// @exclude      https://accounts.google.com/*
 // @exclude      http://docs.google.com/*
 // @exclude      https://docs.google.com/*
 // @exclude      http://mail.google.com
