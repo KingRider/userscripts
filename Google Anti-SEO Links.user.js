@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Google Anti-SEO Links
 // @namespace    http://sandroalvares.com.br
-// @version      v3.21
+// @version      v3.22
 // @description  Anti-SEO
 // @author       KingRider
 // @match        https://*.google.com/*
