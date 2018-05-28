@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         InfoJobs - Anti-Ad-Blocker
 // @namespace    http://sandroalvares.com.br
-// @version      0.3
+// @version      0.4
 // @description  try to take over the world!
 // @author       KingRider 2016-2017
 // @match        http://*.infojobs.com.br/*
@@ -9,6 +9,8 @@
 // @exclude      http://*.infojobs.com.br/candidate/match/insert2.aspx?iv=*
 // @exclude      https://*.infojobs.com.br/candidate/match/insert2.aspx?iv=*
 // @require      https://code.jquery.com/jquery-1.9.1.min.js
+// @updateURL    https://github.com/KingRider/userscripts/raw/master/InfoJobs%20-%20Anti-Ad-Blocker.user.js
+// @downloadURL  https://github.com/KingRider/userscripts/raw/master/InfoJobs%20-%20Anti-Ad-Blocker.user.js
 // @grant        none
 // ==/UserScript==
 
