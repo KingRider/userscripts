@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Google Anti-SEO Links without Adblock
 // @namespace    http://sandroalvares.com.br
-// @version      v4.3
+// @version      v4.4
 // @description  Anti-SEO
 // @author       KingRider 2010 a 2018
 // @match        https://*.google.com*/search?*
@@ -22,6 +22,7 @@ $(document).ready(function() {
         }
         */
 
+        /*
         for (x=0; x < $('a').length; x++) {
             if($($('a')[x]).attr('href')) {
                 if ($($('a')[x]).attr('href').indexOf('googleadservices.com/pagead/aclk') > 0) {
@@ -30,13 +31,16 @@ $(document).ready(function() {
                 };
             };
         };
+        */
         for (y=0; y < $("span:contains('Anúncio')").length; y++) {
             valor2 = $($("span:contains('Anúncio')").parent()[y]).text().substr(+7);
-            valor2 = valor2.replace(/[_\W]+/g, ".");
             if (valor2) {
                 $($("span:contains('Anúncio')").parent().parent()[y])[0].href = "http://"+valor2;
+                $($("span:contains('Anúncio')").parent().parent()[y])[0].href = $($("span:contains('Anúncio')").parent().parent()[y])[0].href.replace(/%E2%80%8E/g, "");
                 $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href = "http://"+valor2;
+                $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href = $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href.replace(/%E2%80%8E/g, "");
             }
+            valor2 = "";
         }
         //console.log($.now());
 
