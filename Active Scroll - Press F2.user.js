@@ -1,0 +1,103 @@
+// ==UserScript==
+// @name         Active Scroll - Press F2
+// @namespace    http://sandroalvares.com.br
+// @version      v2.30
+// @description  Active Scroll a press key F2 - Update 23/May/2019
+// @author       Sandro Alvares (KingRider)
+// @connect      *
+
+// @match        http*://*/*
+// @match        http*://*/*
+
+// @exclude      http*://login.globo.com/*
+// @exclude      http*://minhaconta.globo.com/*
+// @exclude      http*://*.linkedin.com/*
+// @exclude      http*://*.restream.io/*
+// @exclude      http*://*.pornhub.com/*
+// @exclude      http*://*.bebee.com/*
+// @exclude      http*://*.geekhunter.com.br/*
+// @exclude      http*://*.gog.com/*
+// @exclude      http*://*.diabloimmortal.com/*
+// @exclude      http*://*.pontofrio.com.br/*
+// @exclude      http*://*.pelando.com.br/*
+// @exclude      http*://*.battle.net/*
+// @exclude      http*://*.bungie.net/*
+// @exclude      http*://*.gov.br/*
+// @exclude      http*://*.twitch.tv/*
+// @exclude      http*://*.indiegala.com/*
+// @exclude      http*://*.nexon.net/*
+// @exclude      http*://*.filterblade.xyz/*
+// @exclude      http*://*.giveaway.su/*
+// @exclude      http*://*.superuser.com/*
+// @exclude      http*://*.flow.microsoft.com/*
+// @exclude      http*://*.ubi.com/*
+// @exclude      http*://*.cloudfront.net/*
+// @exclude      https://*.reclameaqui.com.br/*
+// @exclude      http*://*.anatel.gov.br/*
+// @exclude      http*://*.meliuz.com.br/*
+// @exclude      http*://*.carrefour.com.br/*
+// @exclude      http*://www.google.com/recaptcha/api2/*
+// @exclude      http*://*.catho.com.br/*
+
+// @xrequire     http*://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
+// @grant        none
+// ==/UserScript==
+
+(function() {
+
+    // --
+    // Generar codigo de teclado
+    // --
+    // http://keycode.info
+
+    document.onkeydown = function(evt) {
+
+        document.onkeyup = function(event) {
+            if (event.key == "F2" || event.keyCode == 113){
+                if ($('div button:contains("adblocker")').length>0) {
+                    var killnumber1 = parseInt($('div button:contains("adblocker")')[0].className.split(/\s+/).pop().replace(/[^0-9]/g, '').substr(1,20));
+                    //$('div:contains(killnumber1)').remove();
+                    document.querySelectorAll('div[id*="'+killnumber1+'"]').forEach(el => el.remove());
+                    document.querySelectorAll('div[class*="'+killnumber1+'"]').forEach(el => el.remove());
+                }
+                if ($('div button:contains("Adblocker")').length>0) {
+                    var killnumber2 = $('div button:contains("Adblocker")')[0].className.split(/\s+/).pop().replace(/[^0-9]/g, '').substr(1,20);
+                    //$('div:contains(killnumber2)').remove();
+                    document.querySelectorAll('div[id*="'+killnumber2+'"]').forEach(el => el.remove());
+                    document.querySelectorAll('div[class*="'+killnumber2+'"]').forEach(el => el.remove());
+                }
+                $('div:contains("adblocker")').parent().prev().hide();
+                $('div:contains("adblocker")').hide();
+                $('span:contains("adblocker")').parent().prev().remove();
+                $('span:contains("adblocker")').remove();
+                //document.body.style.overflow = "auto";
+                $('html').removeAttr('style');
+                $('body').removeAttr('style');
+                //window.scrollTo(0,0);
+            }
+        }
+
+        /*
+        evt = evt || window.event;
+        var isEscape = false;
+        if ("key" in evt) {
+            isEscape = (evt.key == "Escape" || evt.key == "Esc");
+        } else {
+            isEscape = (evt.keyCode == 27);
+        }
+        if (isEscape) {
+            alert("Escape");
+        }
+        */
+    };
+
+    // Solicitação de atualizar layout gmail para ignorar popup
+    setInterval(function() {
+        if (document.querySelector('div.bjd.by8')) {
+            if (document.querySelector('div.bjd.by8').style.display !== 'none') {
+                document.querySelector('div.bjd.by8').style.display = 'none';
+            }
+        }
+    }, 3000);
+
+})();
