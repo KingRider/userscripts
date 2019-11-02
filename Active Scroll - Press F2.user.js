@@ -41,8 +41,10 @@
 
 // @xrequire     http*://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
+
 // @updateURL    https://github.com/KingRider/userscripts/raw/master/Active%20Scroll%20-%20Press%20F2.user.js
 // @downloadURL  https://github.com/KingRider/userscripts/raw/master/Active%20Scroll%20-%20Press%20F2.user.js
+
 // ==/UserScript==
 
 (function() {
