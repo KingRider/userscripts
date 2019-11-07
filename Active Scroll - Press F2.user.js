@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Active Scroll - Press F2
 // @namespace    http://sandroalvares.com.br
-// @version      v2.31
+// @version      v2.32
 // @description  Active Scroll a press key F2 - Update 23/May/2019
 // @author       Sandro Alvares (KingRider)
 // @connect      *
@@ -75,9 +75,8 @@
                 $('span:contains("adblocker")').parent().prev().remove();
                 $('span:contains("adblocker")').remove();
                 //document.body.style.overflow = "auto";
-                $('html').removeAttr('style');
-                $('body').removeAttr('style');
-                $('body').css('overflow', 'initial');
+                $('html').removeAttr('style').css('overflow', 'initial');
+                $('body').removeAttr('style').css('overflow', 'initial');
                 //window.scrollTo(0,0);
             }
         }
