@@ -8,8 +8,8 @@
 // @match        https://pixlr.com/editor/
 // @grant        none
 
-// @updateURL    https://github.com/KingRider/userscripts/blob/master/PixLR%20Editor%20-%20Ads%20Removed.user.js
-// @downloadURL  https://github.com/KingRider/userscripts/blob/master/PixLR%20Editor%20-%20Ads%20Removed.user.js
+// @updateURL    https://github.com/KingRider/userscripts/raw/master/PixLR%20Editor%20-%20Ads%20Removed.user.js
+// @downloadURL  https://github.com/KingRider/userscripts/raw/master/PixLR%20Editor%20-%20Ads%20Removed.user.js
 
 // ==/UserScript==
 
