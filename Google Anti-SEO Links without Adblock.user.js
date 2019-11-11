@@ -1,12 +1,16 @@
 // ==UserScript==
-// @name         Google Anti-SEO Links without Adblock
+// @name         Google_Search_Anti-SEO
 // @namespace    http://sandroalvares.com.br
-// @version      v4.4
-// @description  Anti-SEO
+// @version      v4.41
+// @description  Google Anti-SEO Links without Adblock - Menos Anuncio
 // @author       KingRider 2010 a 2018
-// @match        https://*.google.com*/search?*
-// @match        http://*.google.com*/search?*
-// @require      http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
+// @match        http*://*.google.com*/search?*
+// @require      http://code.jquery.com/jquery-1.9.1.min.js
+// @xxrequire      http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
+
+// @updateURL    https://github.com/KingRider/userscripts/raw/master/Google_Search_Anti-SEO.user.js
+// @downloadURL  https://github.com/KingRider/userscripts/raw/master/Google_Search_Anti-SEO.user.js
+
 // @grant        none
 // ==/UserScript==
 
