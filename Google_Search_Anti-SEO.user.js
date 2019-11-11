@@ -47,6 +47,7 @@ $(document).ready(function() {
             valor2 = "";
         }
         //console.log($.now());
+	$("span:contains('Anúncio')").remove();
 
     }, 500);
 
