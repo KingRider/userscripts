@@ -39,6 +39,8 @@
 // @exclude      http*://www.google.com/recaptcha/api2/*
 // @exclude      http*://*.catho.com.br/*
 // @exclude      http*://*.uipath.com/*
+// @exclude      http*://*.github.com/*
+// @exclude      http*://*.sodex*.com.br/*
 
 // @xrequire     http*://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
