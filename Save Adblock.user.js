@@ -120,12 +120,13 @@
 // @exclude      http*://*.uipath.com/*
 // @exclude      http*://github.com/*
 // @exclude      http*://*.sodex*.com.br/*
+// @exclude      http*://*.my.com/*
 
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
 
-// updateURL     https://github.com/KingRider/userscripts/edit/master/Save%20Adblock.user.js
-// downloadURL   https://github.com/KingRider/userscripts/edit/master/Save%20Adblock.user.js
+// updateURL     https://github.com/KingRider/userscripts/raw/master/Save%20Adblock.user.js
+// downloadURL   https://github.com/KingRider/userscripts/raw/master/Save%20Adblock.user.js
 
 // ==/UserScript==
 
