@@ -6,8 +6,7 @@
 // @author       KingRider
 // @connect      *
 
-// @match        http://*/*
-// @match        https://*/*
+// @match        http*://*/*
 
 // @exclude      https://store.steampowered.com/*
 // @exclude      https://cadastro.net.com.br/*
