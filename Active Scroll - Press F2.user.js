@@ -7,7 +7,6 @@
 // @connect      *
 
 // @match        http*://*/*
-// @match        http*://*/*
 
 // @exclude      http*://login.globo.com/*
 // @exclude      http*://minhaconta.globo.com/*
