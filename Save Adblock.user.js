@@ -1,22 +1,22 @@
 // ==UserScript==
 // @name         Save Adblock
 // @namespace    http://sandroalvares.com.br
-// @version      v4.1
+// @version      v4.2
 // @description  Save Adblock
 // @author       KingRider
 // @connect      *
 
 // @match        http*://*/*
 
-// @exclude      https://store.steampowered.com/*
+// @exclude      http*://*.steampowered.com/*
 // @exclude      https://cadastro.net.com.br/*
 // @exclude      https://help.twitch.tv/*
 // @exclude      https://virusscan.jotti.org/*
-// @exclude      https://steamcommunity.com/*
+// @exclude      http*://steamcommunity.com/*
 // @exclude      https://www.torchlightfrontiers.com/*
-// @exclude      https://dyinglightgame.com/*
+// @exclude      http*://dyinglightgame.com/*
 // @exclude      https://www.arcgames.com/*
-// @exclude      https://*.globo.com/*
+// @exclude      http*://*.globo.com/*
 // @exclude      http://jsfiddle.net/*
 // @exclude      https://robertsspaceindustries.com/*
 // @exclude      https://www.linkedin.com/*
@@ -147,6 +147,7 @@
             document.querySelectorAll('script:last-child')[1].remove();
         }
     }}, 900);
+
     /*
     if (document.querySelectorAll('iframe[id^="google"]').length > 0) {
         for (var g = 0; g < document.querySelectorAll('iframe[id^="google"]').length; g++) {
