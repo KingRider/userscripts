@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Google_Search_Anti-SEO
 // @namespace    http://sandroalvares.com.br
-// @version      5.01
+// @version      5.02
 // @description  Google Anti-SEO Links without Adblock - Menos Anuncio
 // @author       KingRider 2010 a 2019
 
