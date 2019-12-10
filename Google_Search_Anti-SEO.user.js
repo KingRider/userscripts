@@ -48,6 +48,7 @@ $(document).ready(function() {
                 $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href = "http://"+temp;
                 $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href = $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href.replace(/%E2%80%8E/g, "");
                 $("span:contains('Anúncio')").hide();
+		$('li.ads\-ad').remove();
             }
             temp = "";
         }
