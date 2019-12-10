@@ -1,10 +1,13 @@
 // ==UserScript==
 // @name         Google_Search_Anti-SEO
 // @namespace    http://sandroalvares.com.br
-// @version      v4.41
+// @version      v5.01
 // @description  Google Anti-SEO Links without Adblock - Menos Anuncio
-// @author       KingRider 2010 a 2018
-// @match        http*://*.google.com*/search?*
+// @author       KingRider 2010 a 2019
+
+// @match        http*://*.google.com/search?*
+// @match        http*://*.google.com.br/search?*
+
 // @require      http://code.jquery.com/jquery-1.9.1.min.js
 // @xxrequire      http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 
@@ -18,7 +21,7 @@ $(document).ready(function() {
 
     //$(document).bind('keyup.f4', function() {
     setTimeout(function() {
-        var x = 0, y = 0, valor1 = '', valor2 = '';
+        var x = 0, y = 0, z = 0, xx = 0, xy = 0, temp = '';
 
         /*
         for (antiseo=0; antiseo < document.querySelectorAll('div.g h3 a').length; antiseo++) {
@@ -36,18 +39,44 @@ $(document).ready(function() {
             };
         };
         */
+        // -- Pesquisa do texto
         for (y=0; y < $("span:contains('Anúncio')").length; y++) {
-            valor2 = $($("span:contains('Anúncio')").parent()[y]).text().substr(+7);
-            if (valor2) {
-                $($("span:contains('Anúncio')").parent().parent()[y])[0].href = "http://"+valor2;
+            temp = $($("span:contains('Anúncio')").parent()[y]).text().substr(+7);
+            if (temp) {
+                $($("span:contains('Anúncio')").parent().parent()[y])[0].href = "http://"+temp;
                 $($("span:contains('Anúncio')").parent().parent()[y])[0].href = $($("span:contains('Anúncio')").parent().parent()[y])[0].href.replace(/%E2%80%8E/g, "");
-                $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href = "http://"+valor2;
+                $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href = "http://"+temp;
                 $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href = $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href.replace(/%E2%80%8E/g, "");
+                $("span:contains('Anúncio')").hide();
             }
-            valor2 = "";
+            temp = "";
         }
+
+        // -- Pesquisa do produto
+        setInterval(function(){
+            if (document.querySelectorAll('div[class*=group]').length > 0) {
+                for (z=0; z < document.querySelectorAll('div[class*=group]')[0].childNodes.length; z++) {
+                    if ($(document.querySelectorAll('div[class*=group]')[0].childNodes[z]).find('a[href*="/aclk"][style="display:none"]')) {
+                        $(document.querySelectorAll('div[class*=group]')[0].childNodes[z]).find('a[href*="/aclk"][style="display:none"]').remove();
+                    }
+                    document.querySelectorAll('a')[z].removeAttribute("ontouchstart");
+                    document.querySelectorAll('a')[z].removeAttribute("ontouchstart");
+                    document.querySelectorAll('a')[z].removeAttribute("arwt");
+                }
+            } else if (document.querySelectorAll('div[class*=container]').length > 0) {
+                for (xx=0; xx < document.querySelectorAll('div[class*=container]')[0].childNodes.length; xx++) {
+                    if ($(document.querySelectorAll('div[class*=container]')[0].childNodes[z]).find('a[href*="/aclk"][style="display:none"]')) {
+                        $(document.querySelectorAll('div[class*=container]')[0].childNodes[z]).find('a[href*="/aclk"][style="display:none"]').remove();
+                    }
+                }
+                for (xy=0; xy < document.querySelectorAll('div[class*=container]').length; xy++) {
+                    if (document.querySelectorAll('div[class*=container]')[xy].innerText.includes("Patrocinados")) {
+                        document.querySelectorAll('div[class*=container]')[xy].remove();
+                    }
+                }
+            }
+        }, 700);
         //console.log($.now());
-	$("span:contains('Anúncio')").remove();
 
     }, 500);
 
