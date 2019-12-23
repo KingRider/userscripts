@@ -16,6 +16,10 @@
 // @match        https://ovnihoje.com/*
 // @match        https://*.gamesguideinfo.com/*
 // @require      https://code.jquery.com/jquery-1.9.1.min.js
+
+// @updateURL    https://github.com/KingRider/userscripts/raw/master/Anti%20Ads%20per%20KingRider.user.js
+// @downloadURL  https://github.com/KingRider/userscripts/raw/master/Anti%20Ads%20per%20KingRider.user.js
+
 // @grant        none
 // ==/UserScript==
 
