@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Save Adblock
+// @name         Save Adblock (Anti-modal)
 // @namespace    http://sandroalvares.com.br
-// @version      v4.21
+// @version      v4.22
 // @description  Save Adblock
 // @author       KingRider
 // @connect      *
@@ -125,17 +125,24 @@
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
 
-// updateURL     https://github.com/KingRider/userscripts/raw/master/Save%20Adblock.user.js
-// downloadURL   https://github.com/KingRider/userscripts/raw/master/Save%20Adblock.user.js
+// updateURL     https://github.com/KingRider/userscripts/raw/master/Save%20Adblock%20(Anti-modal).user.js
+// downloadURL   https://github.com/KingRider/userscripts/raw/master/Save%20Adblock%20(Anti-modal).user.js
 
 // ==/UserScript==
 
 (function() {
 
-    if (document.getElementById('modal')) {
-        var modal = document.getElementById('modal');
-        modal.parentNode.removeChild(modal);
-    }
+    var sa_x = 0;
+
+    //if (document.querySelect('modal')) {
+    setInterval(function() {
+        if (document.querySelectorAll('div[id*=modal]').length > 0) {
+            for (sa_x = 0; sa_x < document.querySelectorAll('div[id*=modal]').length; sa_x++) {
+                var modal = document.querySelectorAll('div[id*=modal]')[sa_x];
+                modal.parentNode.removeChild(modal);
+            }
+        }
+    }, 1500);
 
     // d3planner.com
     setInterval(function () {
