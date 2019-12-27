@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Active Scroll - Press F2
 // @namespace    http://sandroalvares.com.br
-// @version      v2.321
-// @description  Active Scroll a press key F2 - Update 23/May/2019
+// @version      v2.4
+// @description  Active Scroll a press key F2 - Update 27/Dez/2019
 // @author       Sandro Alvares (KingRider)
 // @connect      *
 
@@ -41,6 +41,7 @@
 // @exclude      http*://github.com/*
 // @exclude      http*://*.sodex*.com.br/*
 // @exclude      http*://*.ashleymadison.com/*
+// @exclude      http*://*.amazon.com*/*
 
 // @xrequire     http*://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
@@ -77,6 +78,15 @@
                 $('div:contains("adblocker")').hide();
                 $('span:contains("adblocker")').parent().prev().remove();
                 $('span:contains("adblocker")').remove();
+
+                // SuperInteressante - https://super.abril.com.br
+                $('div[id*=offer]').remove();
+                $('div[class*=offer]').remove();
+                //$('div[style*=none]').remove();
+                $('div[class*="ad\-top"]').remove();
+                $('iframe').remove();
+                // ---
+
                 //document.body.style.overflow = "auto";
                 $('html').removeAttr('style').css('overflow', 'initial');
                 $('body').removeAttr('style').css('overflow', 'initial');
@@ -105,6 +115,12 @@
                 document.querySelector('div.bjd.by8').style.display = 'none';
             }
         }
-    }, 3000);
+        var sa_x = 0;
+        for (sa_x=0; sa_x < $('div:contains("Pushnews")').parent().length; sa_x++) {
+            if ($('div:contains("Pushnews")').parent()[sa_x].localName != 'body') {
+                $('div:contains("Pushnews")').parent()[sa_x].remove();
+            }
+        }
+    }, 2000);
 
 })();
