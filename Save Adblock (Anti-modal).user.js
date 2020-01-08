@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Save Adblock (Anti-modal)
 // @namespace    http://sandroalvares.com.br
-// @version      v4.222
+// @version      v4.223
 // @description  Save Adblock
 // @author       KingRider
 // @connect      *
@@ -123,6 +123,7 @@
 // @exclude      http*://*.ashleymadison.com/*
 // @exclude      http*://*.itau.com.br/*
 // @exclude      http*://*.imgbb.com/*
+// @exclude      http*://*.pixlr.com/editor/*
 
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
