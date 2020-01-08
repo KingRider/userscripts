@@ -45,7 +45,7 @@
 // @exclude      http*://*.epicgames.com/*
 // @exclude      http*://*.itau.com.br/*
 // @exclude      http*://*.imgbb.com/*
-// @exclude      http*://*.pixlr.com/editor/*
+// @exclude      http*://*.pixlr.com/e*
 
 // @xrequire     http*://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
