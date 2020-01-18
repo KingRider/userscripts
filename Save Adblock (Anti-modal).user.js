@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Save Adblock (Anti-modal)
 // @namespace    http://sandroalvares.com.br
-// @version      v4.224
+// @version      v4.230
 // @description  Save Adblock
 // @author       KingRider
 // @connect      *
