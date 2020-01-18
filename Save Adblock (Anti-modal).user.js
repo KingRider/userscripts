@@ -125,6 +125,7 @@
 // @exclude      http*://*.imgbb.com/*
 // @exclude      http*://*.pixlr.com/e*
 // @exclude      http*://docs.google.com/*
+// @exclude      https://*.projectgenesis.com/*
 
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
