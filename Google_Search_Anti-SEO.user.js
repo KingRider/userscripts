@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Google_Search_Anti-SEO
 // @namespace    http://sandroalvares.com.br
-// @version      5.02
+// @version      5.10
 // @description  Google Anti-SEO Links without Adblock - Menos Anuncio
-// @author       KingRider 2010 a 2019
+// @author       KingRider 2010 a 2020
 
 // @match        http*://*.google.com/search?*
 // @match        http*://*.google.com.br/search?*
@@ -17,19 +17,20 @@
 // @grant        none
 // ==/UserScript==
 
-$(document).ready(function() {
+if (jQuery) {
+    $(document).ready(function() {
 
-    //$(document).bind('keyup.f4', function() {
-    setTimeout(function() {
-        var x = 0, y = 0, z = 0, xx = 0, xy = 0, temp = '';
+        //$(document).bind('keyup.f4', function() {
+        setTimeout(function() {
+            var x = 0, y = 0, z = 0, xx = 0, xy = 0, temp = '';
 
-        /*
+            /*
         for (antiseo=0; antiseo < document.querySelectorAll('div.g h3 a').length; antiseo++) {
             document.querySelectorAll('div.g h3 a')[antiseo].removeAttribute('onmousedown');
         }
         */
 
-        /*
+            /*
         for (x=0; x < $('a').length; x++) {
             if($($('a')[x]).attr('href')) {
                 if ($($('a')[x]).attr('href').indexOf('googleadservices.com/pagead/aclk') > 0) {
@@ -39,55 +40,58 @@ $(document).ready(function() {
             };
         };
         */
-        // -- Pesquisa do texto
-        for (y=0; y < $("span:contains('Anúncio')").length; y++) {
-            temp = $($("span:contains('Anúncio')").parent()[y]).text().substr(+7);
-            if (temp) {
-                $($("span:contains('Anúncio')").parent().parent()[y])[0].href = "http://"+temp;
-                $($("span:contains('Anúncio')").parent().parent()[y])[0].href = $($("span:contains('Anúncio')").parent().parent()[y])[0].href.replace(/%E2%80%8E/g, "");
-                $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href = "http://"+temp;
-                $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href = $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href.replace(/%E2%80%8E/g, "");
-                $("span:contains('Anúncio')").hide();
-            }
-            temp = "";
-        }
-
-        // -- Pesquisa do produto
-        setInterval(function(){
-            if (document.querySelectorAll('div[class*=group]').length > 0) {
-                for (z=0; z < document.querySelectorAll('div[class*=group]')[0].childNodes.length; z++) {
-                    if ($(document.querySelectorAll('div[class*=group]')[0].childNodes[z]).find('a[href*="/aclk"][style="display:none"]')) {
-                        $(document.querySelectorAll('div[class*=group]')[0].childNodes[z]).find('a[href*="/aclk"][style="display:none"]').remove();
-                    }
-                    document.querySelectorAll('a')[z].removeAttribute("ontouchstart");
-                    document.querySelectorAll('a')[z].removeAttribute("ontouchstart");
-                    document.querySelectorAll('a')[z].removeAttribute("arwt");
+            // -- Pesquisa do texto
+            for (y=0; y < $("span:contains('Anúncio')").length; y++) {
+                temp = $($("span:contains('Anúncio')").parent()[y]).text().substr(+7);
+                if (temp && $($("span:contains('Anúncio')").parent().parent()[0]).prev()[0]) {
+                    console.log('inicio: '+y);
+                    $($("span:contains('Anúncio')").parent().parent()[y])[0].href = "http://"+temp;
+                    $($("span:contains('Anúncio')").parent().parent()[y])[0].href = $($("span:contains('Anúncio')").parent().parent()[y])[0].href.replace(/%E2%80%8E/g, "");
+                    $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href = "http://"+temp;
+                    $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href = $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href.replace(/%E2%80%8E/g, "");
+                    $("span:contains('Anúncio')").hide();
+                    console.log('fim: '+y);
                 }
-            } else if (document.querySelectorAll('div[class*=container]').length > 0) {
-                for (xx=0; xx < document.querySelectorAll('div[class*=container]')[0].childNodes.length; xx++) {
-                    if ($(document.querySelectorAll('div[class*=container]')[0].childNodes[z]).find('a[href*="/aclk"][style="display:none"]')) {
-                        $(document.querySelectorAll('div[class*=container]')[0].childNodes[z]).find('a[href*="/aclk"][style="display:none"]').remove();
+                temp = "";
+            }
+
+            // -- Pesquisa do produto
+            setInterval(function(){
+                if (document.querySelectorAll('div[class*=group]').length > 0) {
+                    for (z=0; z < document.querySelectorAll('div[class*=group]')[0].childNodes.length; z++) {
+                        if ($(document.querySelectorAll('div[class*=group]')[0].childNodes[z]).find('a[href*="/aclk"][style="display:none"]')) {
+                            $(document.querySelectorAll('div[class*=group]')[0].childNodes[z]).find('a[href*="/aclk"][style="display:none"]').remove();
+                        }
+                        document.querySelectorAll('a')[z].removeAttribute("ontouchstart");
+                        document.querySelectorAll('a')[z].removeAttribute("ontouchstart");
+                        document.querySelectorAll('a')[z].removeAttribute("arwt");
+                    }
+                } else if (document.querySelectorAll('div[class*=container]').length > 0) {
+                    for (xx=0; xx < document.querySelectorAll('div[class*=container]')[0].childNodes.length; xx++) {
+                        if ($(document.querySelectorAll('div[class*=container]')[0].childNodes[z]).find('a[href*="/aclk"][style="display:none"]')) {
+                            $(document.querySelectorAll('div[class*=container]')[0].childNodes[z]).find('a[href*="/aclk"][style="display:none"]').remove();
+                        }
+                    }
+                    for (xy=0; xy < document.querySelectorAll('div[class*=container]').length; xy++) {
+                        if (document.querySelectorAll('div[class*=container]')[xy].innerText.includes("Patrocinados")) {
+                            document.querySelectorAll('div[class*=container]')[xy].remove();
+                        }
                     }
                 }
-                for (xy=0; xy < document.querySelectorAll('div[class*=container]').length; xy++) {
-                    if (document.querySelectorAll('div[class*=container]')[xy].innerText.includes("Patrocinados")) {
-                        document.querySelectorAll('div[class*=container]')[xy].remove();
-                    }
+                if ($('li.ads\-ad').length) {
+                    $('li.ads\-ad').remove();
                 }
-            }
-            if ($('li.ads\-ad').length) {
-                $('li.ads\-ad').remove();
-            }
-        }, 700);
-        //console.log($.now());
+            }, 700);
+            //console.log($.now());
 
-    }, 500);
+        }, 500);
 
-    if (window.location.pathname == "/url" && document.body.innerText.search('Aviso de redirecionamento') === 0) {
-        window.location.href = unescape(window.location.search.replace("?hl=pt-BR&amp;q=", ""));
-    };
+        if (window.location.pathname == "/url" && document.body.innerText.search('Aviso de redirecionamento') === 0) {
+            window.location.href = unescape(window.location.search.replace("?hl=pt-BR&amp;q=", ""));
+        };
 
-});
+    });
+}
 
 /*
 if ($('div.rc h3.r a').length) {
