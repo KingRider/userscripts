@@ -9,6 +9,12 @@
     "sec-fetch-site": "same-origin",
     "X-Requested-With": "XMLHttpRequest"
   },
+  "params": {
+    "credentials": "include",
+    "referrer": "https://aplic.inmetrics.com.br/pontoeletronico/",
+    "referrerPolicy": "no-referrer-when-downgrade",
+    "mode": "cors"
+  },
   "formData": {
     "matricula": "27472143898",
     "latitude": "-23.503423",
