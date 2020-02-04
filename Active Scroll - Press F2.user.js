@@ -49,6 +49,7 @@
 // @exclude      http*://docs.google.com/*
 // @exclude      https://*.projectgenesis.com/*
 // @exclude      https://noticias.band.uol.com.br/*
+// @exclude      https://www.ifood.com.br/*
 
 // @xrequire     http*://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
