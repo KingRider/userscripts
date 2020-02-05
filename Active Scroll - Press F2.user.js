@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Active Scroll - Press F2
 // @namespace    http://sandroalvares.com.br
-// @version      v2.43
+// @version      v2.433
 // @description  Active Scroll a press key F2 - Update 27/Dez/2019
 // @author       Sandro Alvares (KingRider)
 // @connect      *
@@ -50,6 +50,7 @@
 // @exclude      https://*.projectgenesis.com/*
 // @exclude      https://noticias.band.uol.com.br/*
 // @exclude      https://www.ifood.com.br/*
+// @exclude      https://*.awardspace.net/*
 
 // @xrequire     http*://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
