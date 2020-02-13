@@ -52,6 +52,7 @@
 // @exclude      https://www.ifood.com.br/*
 // @exclude      https://*.awardspace.net/*
 // @exclude      http*://*.apple.com/*
+// @exclude      http*://*.gov.br/*
 
 // @xrequire     http*://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
