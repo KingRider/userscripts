@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Save Adblock (Anti-modal)
 // @namespace    http://sandroalvares.com.br
-// @version      v4.2475
+// @version      v4.2480
 // @description  Save Adblock
 // @author       KingRider
 // @connect      *
@@ -27,8 +27,7 @@
 // @exclude      https://eddb.io/*
 // @exclude      https://restream.io/*
 // @exclude      https://mixer.com/*
-// @exclude      http://*.oportunidadesespeciais.com.br/*
-// @exclude      https://*.oportunidadesespeciais.com.br/*
+// @exclude      http*://*.oportunidadesespeciais.com.br/*
 // @exclude      https://*.pornhub.com/*
 // @exclude      https://play.google.com/*
 // @exclude      https://www.geekhunter.com.br/*
@@ -89,7 +88,7 @@
 // @exclude      http://*.gov.br/*
 // @exclude      https://www.youtube.com/live_dashboard*
 // @exclude      https://studio.youtube.com/*
-// @exclude      http://192.168.0.1/*
+// @exclude      http*://192.168.0.1/*
 // @exclude      https://*.twitch.tv/*
 // @exclude      https://*.wizebot.tv/*
 // @exclude      https://streamelements.com/*
@@ -114,7 +113,7 @@
 // @exclude      http*://*.anatel.gov.br/*
 // @exclude      http*://*.meliuz.com.br/*
 // @exclude      http*://*.carrefour.com.br/*
-// @exclude      http*://www.google.com/recaptcha/api2/*
+// @exclude      http*://*.google.com/recaptcha/api2/*
 // @exclude      http*://*.catho.com.br/*
 // @exclude      http*://*.uipath.com/*
 // @exclude      http*://github.com/*
@@ -136,6 +135,7 @@
 // @exclude      http*://*.bandainamcoid.com/*
 // @exclude      http*://*.bandainamco-ol.co.jp/*
 // @exclude      http*://*.bandainamcostudios.com/*
+// @exclude      http*://*.infojobs.com.br/*
 
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
