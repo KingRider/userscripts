@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Active Scroll - Press F2
 // @namespace    http://sandroalvares.com.br
-// @version      v2.475
+// @version      v2.480
 // @description  Active Scroll a press key F2 - Update 27/Dez/2019
 // @author       Sandro Alvares (KingRider)
 // @connect      *
@@ -35,7 +35,7 @@
 // @exclude      http*://*.anatel.gov.br/*
 // @exclude      http*://*.meliuz.com.br/*
 // @exclude      http*://*.carrefour.com.br/*
-// @exclude      http*://www.google.com/recaptcha/api2/*
+// @exclude      http*://*.google.com/recaptcha/api2/*
 // @exclude      http*://*.catho.com.br/*
 // @exclude      http*://*.uipath.com/*
 // @exclude      http*://github.com/*
@@ -58,6 +58,7 @@
 // @exclude      http*://*.bandainamcoid.com/*
 // @exclude      http*://*.bandainamco-ol.co.jp/*
 // @exclude      http*://*.bandainamcostudios.com/*
+// @exclude      http*://*.infojobs.com.br/*
 
 // @xrequire     http*://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
