@@ -62,7 +62,7 @@
 // @exclude      http*://*.strongholdkingdoms.com/*
 // @exclude      http*://*.facebook.com/ajax/*
 // @exclude      http*://*.registro.br/*
-// @exclude      http*://*.pixlr.com/*
+// @exclude      http*://pixlr.com/*
 
 // @xrequire     http*://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
