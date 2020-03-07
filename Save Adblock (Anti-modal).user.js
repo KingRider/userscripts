@@ -140,7 +140,7 @@
 // @exclude      http*://*.facebook.com/ajax/*
 // @exclude      http*://pixlr.com/e*
 // @exclude      http*://*.registro.br/*
-// @exclude      http*://*.pixlr.com/*
+// @exclude      http*://pixlr.com/*
 
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
