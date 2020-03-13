@@ -143,6 +143,7 @@
 // @exclude      http*://pixlr.com/*
 // @exclude      http*://*.net.com.br/*
 // @exclude      http*://tinder.com/*
+// @exclude      https://www.google.com/maps/*
 
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
