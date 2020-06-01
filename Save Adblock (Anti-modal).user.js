@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Save Adblock (Anti-modal)
 // @namespace    http://sandroalvares.com.br
-// @version      v4.2520
+// @version      v4.4
 // @description  Save Adblock
 // @author       KingRider
 // @connect      *
@@ -217,6 +217,12 @@
     if (jQuery('body:contains("adblocker")').length) {
         var healerReplacedd = $('body').html().replace(/\<style\>#(.*?)\{/gi, '#stopHacker{');
         jQuery('body').html(healerReplacedd);
+    }
+
+    for (f=0; f < document.querySelectorAll('div').length; f++) {
+        if (document.querySelectorAll('div')[f].classList.value.indexOf('adblock') > 0) {
+            document.querySelectorAll('div')[f].style.display = 'none';
+        }
     }
 
     // ativar scroll
