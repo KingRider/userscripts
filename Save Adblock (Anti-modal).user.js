@@ -157,7 +157,7 @@
 
 (function() {
 
-    var sa_x = 0;
+    var sa_x = 0, escuro = 0, f = 0;
 
     //if (document.querySelect('modal')) {
     setInterval(function() {
