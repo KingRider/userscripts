@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Google_Search_Anti-SEO
 // @namespace    http://sandroalvares.com.br
-// @version      5.10
+// @version      5.25
 // @description  Google Anti-SEO Links without Adblock - Menos Anuncio
 // @author       KingRider 2010 a 2020
 
@@ -42,15 +42,20 @@ if (jQuery) {
         */
             // -- Pesquisa do texto
             for (y=0; y < $("span:contains('Anúncio')").length; y++) {
-                temp = $($("span:contains('Anúncio')").parent()[y]).text().substr(+7);
-                if (temp && $($("span:contains('Anúncio')").parent().parent()[0]).prev()[0]) {
-                    console.log('inicio: '+y);
-                    $($("span:contains('Anúncio')").parent().parent()[y])[0].href = "http://"+temp;
-                    $($("span:contains('Anúncio')").parent().parent()[y])[0].href = $($("span:contains('Anúncio')").parent().parent()[y])[0].href.replace(/%E2%80%8E/g, "");
-                    $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href = "http://"+temp;
-                    $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href = $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href.replace(/%E2%80%8E/g, "");
-                    $("span:contains('Anúncio')").hide();
-                    console.log('fim: '+y);
+                $('[onmousedown]').removeAttr('onmousedown');
+                //temp = $($("span:contains('Anúncio')").parent()[y]).text().substr(+);
+                if ($("a span:contains('Anúncio')").parent().parent()[y]) {
+                    temp = $("a span:contains('Anúncio')").parent().parent()[y].href;
+                    if (temp) {
+                        if ($($("span:contains('Anúncio')").parent().parent()[y]).length) {
+                            $($("span:contains('Anúncio')").parent().parent()[y])[0].href = temp;
+                            $($("span:contains('Anúncio')").parent().parent()[y])[0].href = $($("span:contains('Anúncio')").parent().parent()[y])[0].href.replace(/%E2%80%8E/g, "");
+                        }
+                        if ($($("span:contains('Anúncio')").parent().parent()[y]).prev().length) {
+                            $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href = temp;
+                            $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href = $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href.replace(/%E2%80%8E/g, "");
+                        }
+                    }
                 }
                 temp = "";
             }
