@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Save Adblock (Anti-modal)
-// @namespace    http://sandroalvares.com.br
-// @version      v4.51
+// @namespace    http://www.sandroalvares.com.br
+// @version      v4.52
 // @description  Save Adblock
 // @author       KingRider
 // @connect      *
@@ -193,6 +193,16 @@
             document.querySelectorAll('script:last-child')[1].remove();
         }
     }}, 900);
+
+    // gamepedia.com
+    var gp = 0;
+    setInterval(function () {
+        if (document.querySelectorAll('div#siderail_outward_gamepedia').length > 0) {
+            for (gp = 0; gp < document.querySelectorAll('div#siderail_outward_gamepedia').length; gp++) {
+                document.querySelectorAll('div#siderail_outward_gamepedia')[gp].remove();
+            }
+        }
+    }, 900);
 
     /*
     if (document.querySelectorAll('iframe[id^="google"]').length > 0) {
