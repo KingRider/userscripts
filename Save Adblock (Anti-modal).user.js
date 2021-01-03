@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Save Adblock (Anti-modal)
 // @namespace    http://www.sandroalvares.com.br
-// @version      v4.52
+// @version      v4.53
 // @description  Save Adblock
 // @author       KingRider
 // @connect      *
@@ -148,6 +148,8 @@
 // @exclude      http*://*.webzen.com/*
 // @exclude      http*://*.wish.com/*
 // @exclude      http*://*.mercadolivre.com/*
+// @exclude      https://waplog.com/*
+// @exclude      http*://*.y2mate.com/*
 
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
@@ -157,9 +159,10 @@
 
 // ==/UserScript==
 
-(function() {
+(function (window) {
+    "use strict";
 
-    var sa_x = 0, escuro = 0, f = 0;
+    var sa_x = 0, escuro = 0, f = 0, gp = 0;
 
     //if (document.querySelect('modal')) {
     setInterval(function() {
@@ -195,7 +198,6 @@
     }}, 900);
 
     // gamepedia.com
-    var gp = 0;
     setInterval(function () {
         if (document.querySelectorAll('div#siderail_outward_gamepedia').length > 0) {
             for (gp = 0; gp < document.querySelectorAll('div#siderail_outward_gamepedia').length; gp++) {
@@ -257,5 +259,7 @@
 
     document.oncontextmenu = function() {};
     document.onselectstart = function() {};
+
+    console.log('>>>>>>>>>>>> Rodou Save Adblock com sucesso.');
 
 })();
