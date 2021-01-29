@@ -88,12 +88,18 @@
         if (document.querySelectorAll('[class=alpha]').length > 0) {
             var ads=0;
             for (ads=0; ads < document.querySelectorAll('[class=alpha]').length; ads++) {
-                console.log(ads);
-                document.querySelectorAll('[class=alpha]')[ads].style.display = 'none';
+                if (document.querySelectorAll('[class=alpha]')[ads].style.display != 'none') {
+                    document.querySelectorAll('[class=alpha]')[ads].style.display = 'none';
+                }
             }
         }
         if (document.querySelectorAll("div#main\-container div").length > 0) {
-            document.querySelectorAll("div#main\-container div")[0].childNodes[3].remove();
+            if (document.querySelectorAll("div#main\-container div")[0].childNodes[3]) {
+                document.querySelectorAll("div#main\-container div")[0].childNodes[3].remove();
+            }
+        }
+        if (document.querySelectorAll("[id=abAlert]")[0].style.display == "") {
+            document.querySelectorAll("[id=abAlert]")[0].style.display = "none";
         }
         //pornhub.com###_0
         //pornhub.com###iiaidbigb_2
