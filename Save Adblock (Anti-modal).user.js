@@ -162,6 +162,7 @@
 // @exclude      http*://*.roblox.com*/*
 // @exclude      http*://*rok*/*
 // @exclude      https://login.yahoo.com*/*
+// @exclude      https://login.yahoo.net*/*
 
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
@@ -273,5 +274,6 @@
     document.onselectstart = function() {};
 
     console.log('>>>>>>>>>>>> Rodou Save Adblock com sucesso.');
+    console.log(self.window.location.protocol+"//"+self.window.location.host+"/*");
 
 })();
