@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Save Adblock (Anti-modal)
 // @namespace    http://www.sandroalvares.com.br
-// @version      v4.56
+// @version      v4.58
 // @description  Save Adblock
 // @author       KingRider
 // @connect      *
@@ -135,7 +135,6 @@
 // @exclude      http*://*.bandainamcoid.com/*
 // @exclude      http*://*.bandainamco-ol.co.jp/*
 // @exclude      http*://*.bandainamcostudios.com/*
-// @exclude      http*://*.infojobs.com.br/*
 // @exclude      http*://*.strongholdkingdoms.com/*
 // @exclude      http*://*.facebook.com/ajax/*
 // @exclude      http*://pixlr.com/e*
@@ -185,10 +184,34 @@
                 modal.parentNode.removeChild(modal);
             }
         }
+        if (document.querySelectorAll('div[class*=modal]').length > 0) {
+            for (sa_x = 0; sa_x < document.querySelectorAll('div[class*=modal]').length; sa_x++) {
+                var modal3 = document.querySelectorAll('div[class*=modal]')[sa_x];
+                modal3.parentNode.removeChild(modal3);
+            }
+        }
+        if (document.querySelectorAll('div[id^=modal]').length > 0) {
+            for (sa_x = 0; sa_x < document.querySelectorAll('div[id^=modal]').length; sa_x++) {
+                var modal1 = document.querySelectorAll('div[id^=modal]')[sa_x];
+                modal1.parentNode.removeChild(modal1);
+            }
+        }
+        if (document.querySelectorAll('div[class^=modal]').length > 0) {
+            for (sa_x = 0; sa_x < document.querySelectorAll('div[class^=modal]').length; sa_x++) {
+                var modal2 = document.querySelectorAll('div[class^=modal]')[sa_x];
+                modal2.parentNode.removeChild(modal2);
+            }
+        }
         if (document.querySelectorAll('div[id*=adblock]').length > 0) {
             for (sa_x = 0; sa_x < document.querySelectorAll('div[id*=adblock]').length; sa_x++) {
                 var adblock = document.querySelectorAll('div[id*=adblock]')[sa_x];
                 adblock.parentNode.removeChild(adblock);
+            }
+        }
+        if (document.querySelectorAll('div[id^=adblock]').length > 0) {
+            for (sa_x = 0; sa_x < document.querySelectorAll('div[id^=adblock]').length; sa_x++) {
+                var adblock2 = document.querySelectorAll('div[id^=adblock]')[sa_x];
+                adblock2.parentNode.removeChild(adblock2);
             }
         }
         for (escuro = 0; escuro < document.querySelectorAll('div').length; escuro++) {
