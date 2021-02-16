@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Save Adblock (Anti-modal)
 // @namespace    http://www.sandroalvares.com.br
-// @version      v4.58
+// @version      v4.582
 // @description  Save Adblock
 // @author       KingRider
 // @connect      *
@@ -162,6 +162,8 @@
 // @exclude      http*://*rok*/*
 // @exclude      https://login.yahoo.com*/*
 // @exclude      https://login.yahoo.net*/*
+// @exclude      http*://*.netflix.*/*
+// @exclude      http*://*.amazon.com*/*
 
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
@@ -285,6 +287,9 @@
     // document.body.style.overflow = "auto";
     // $('html').removeAttr('style');
     // $('body').removeAttr('style');
+
+    // fast text DOM
+    // $('html').text().replace(/[^A-Z0-9]/ig, '').toLowerCase().toString().indexOf('publicidade')
 
     $.fn.disableSelection = function() {
         return this
