@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PornHub.com
 // @namespace    http://sandroalvares.com.br
-// @version      v1.24
+// @version      v1.25
 // @description  Menos propaganda e expandir espaço (less ads and space expand) - Desde 2012 a jun/2019
 // @author       KingRider
 // @match        http://*.pornhub.com/*
@@ -85,11 +85,19 @@
                 }
             }
         }
+        if (document.querySelectorAll('[class*=underplayerAd]').length > 0) {
+            var ad1=0;
+            for (ad1=0; ad1 < document.querySelectorAll('[class*=underplayerAd]').length; ad1++) {
+                if (document.querySelectorAll('[class*=underplayerAd]')[ad1].style.display != 'none') {
+                    document.querySelectorAll('[class*=underplayerAd]')[ad1].style.display = 'none';
+                }
+            }
+        }
         if (document.querySelectorAll('[class=alpha]').length > 0) {
-            var ads=0;
-            for (ads=0; ads < document.querySelectorAll('[class=alpha]').length; ads++) {
-                if (document.querySelectorAll('[class=alpha]')[ads].style.display != 'none') {
-                    document.querySelectorAll('[class=alpha]')[ads].style.display = 'none';
+            var ad2=0;
+            for (ad2=0; ad2 < document.querySelectorAll('[class=alpha]').length; ad2++) {
+                if (document.querySelectorAll('[class=alpha]')[ad2].style.display != 'none') {
+                    document.querySelectorAll('[class=alpha]')[ad2].style.display = 'none';
                 }
             }
         }
