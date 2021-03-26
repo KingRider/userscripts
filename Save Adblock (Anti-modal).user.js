@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Save Adblock (Anti-modal)
 // @namespace    http://www.sandroalvares.com.br
-// @version      v4.59
+// @version      v4.621
 // @description  Save Adblock
 // @author       KingRider
 // @connect      *
@@ -169,6 +169,11 @@
 // @exclude      https://genshin.mihoyo.com/*
 // @exclude      https://*.adpweb.com.br/*
 // @exclude      https://*.*game*.com*/*
+// @exclude      https://*.gtarcade.com/*
+// @exclude      https://*.mibrasil.com.br/*
+// @exclude      http*://dulfy.net/*
+// @exclude      http*://www.youtube./*
+// @exclude      http://en.gw2skills.net/*
 
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
@@ -227,6 +232,8 @@
             }
         }
     }, 1500);
+
+    jQuery(document).ready(function($){ // jQuery $ is not defined
 
     // d3planner.com
     setInterval(function () {
@@ -287,6 +294,8 @@
             document.querySelectorAll('div')[f].style.display = 'none';
         }
     }
+
+    });
 
     // ativar scroll
     // document.body.style.overflow = "auto";
