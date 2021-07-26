@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Save Adblock (Anti-modal)
 // @namespace    http://www.sandroalvares.com.br
-// @version      v4.621
+// @version      v4.6610
 // @description  Save Adblock
 // @author       KingRider
 // @connect      *
@@ -124,8 +124,8 @@
 // @exclude      http*://*.imgbb.com/*
 // @exclude      http*://*.pixlr.com/e*
 // @exclude      http*://docs.google.com/*
+// @exclude      http*://mail.google.com/*
 // @exclude      https://*.projectgenesis.com/*
-// @exclude      https://noticias.band.uol.com.br/*
 // @exclude      https://www.ifood.com.br/*
 // @exclude      https://*.awardspace.net/*
 // @exclude      http*://*.apple.com/*
@@ -174,6 +174,12 @@
 // @exclude      http*://dulfy.net/*
 // @exclude      http*://www.youtube./*
 // @exclude      http://en.gw2skills.net/*
+// @exclude      https://gw2timer.com/*
+// @exclude      https://*.answers.yahoo.com*/*
+// @exclude      http*://*.uol.com.br/*
+// @exclude      https://player.band.com.br/*
+// @exclude      http*://*.primevideo.com/*
+// @exclude      http*://*.dafiti.com.br/*
 
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
@@ -189,74 +195,90 @@
     var sa_x = 0, escuro = 0, f = 0, gp = 0;
 
     //if (document.querySelect('modal')) {
-    setInterval(function() {
+    const repetir = setInterval(function() {
         if (document.querySelectorAll('div[id*=modal]').length > 0) {
-            for (sa_x = 0; sa_x < document.querySelectorAll('div[id*=modal]').length; sa_x++) {
-                var modal = document.querySelectorAll('div[id*=modal]')[sa_x];
-                modal.parentNode.removeChild(modal);
-            }
+            if (confirm(self.window.location.protocol+"//"+self.window.location.host+"/*\n\r1.Remover Modal?")) {
+                for (sa_x = 0; sa_x < document.querySelectorAll('div[id*=modal]').length; sa_x++) {
+                    var modal = document.querySelectorAll('div[id*=modal]')[sa_x];
+                    modal.parentNode.removeChild(modal);
+                }
+            } else { clearInterval(repetir); exit(0); }
         }
         if (document.querySelectorAll('div[class*=modal]').length > 0) {
-            for (sa_x = 0; sa_x < document.querySelectorAll('div[class*=modal]').length; sa_x++) {
-                var modal3 = document.querySelectorAll('div[class*=modal]')[sa_x];
-                modal3.parentNode.removeChild(modal3);
-            }
+            if (confirm(self.window.location.protocol+"//"+self.window.location.host+"/*\n\r2.Remover Modal?")) {
+                for (sa_x = 0; sa_x < document.querySelectorAll('div[class*=modal]').length; sa_x++) {
+                    var modal3 = document.querySelectorAll('div[class*=modal]')[sa_x];
+                    modal3.parentNode.removeChild(modal3);
+                }
+            } else { clearInterval(repetir); exit(0); }
         }
         if (document.querySelectorAll('div[id^=modal]').length > 0) {
-            for (sa_x = 0; sa_x < document.querySelectorAll('div[id^=modal]').length; sa_x++) {
-                var modal1 = document.querySelectorAll('div[id^=modal]')[sa_x];
-                modal1.parentNode.removeChild(modal1);
-            }
+            if (confirm(self.window.location.protocol+"//"+self.window.location.host+"/*\n\r3.Remover Modal?")) {
+                for (sa_x = 0; sa_x < document.querySelectorAll('div[id^=modal]').length; sa_x++) {
+                    var modal1 = document.querySelectorAll('div[id^=modal]')[sa_x];
+                    modal1.parentNode.removeChild(modal1);
+                }
+            } else { clearInterval(repetir); exit(0); }
         }
         if (document.querySelectorAll('div[class^=modal]').length > 0) {
-            for (sa_x = 0; sa_x < document.querySelectorAll('div[class^=modal]').length; sa_x++) {
-                var modal2 = document.querySelectorAll('div[class^=modal]')[sa_x];
-                modal2.parentNode.removeChild(modal2);
-            }
+            if (confirm(self.window.location.protocol+"//"+self.window.location.host+"/*\n\r4.Remover Modal?")) {
+                for (sa_x = 0; sa_x < document.querySelectorAll('div[class^=modal]').length; sa_x++) {
+                    var modal2 = document.querySelectorAll('div[class^=modal]')[sa_x];
+                    modal2.parentNode.removeChild(modal2);
+                }
+            } else { clearInterval(repetir); exit(0); }
         }
         if (document.querySelectorAll('div[id*=adblock]').length > 0) {
-            for (sa_x = 0; sa_x < document.querySelectorAll('div[id*=adblock]').length; sa_x++) {
-                var adblock = document.querySelectorAll('div[id*=adblock]')[sa_x];
-                adblock.parentNode.removeChild(adblock);
-            }
+            if (confirm(self.window.location.protocol+"//"+self.window.location.host+"/*\n\r5.Remover Modal?")) {
+                for (sa_x = 0; sa_x < document.querySelectorAll('div[id*=adblock]').length; sa_x++) {
+                    var adblock = document.querySelectorAll('div[id*=adblock]')[sa_x];
+                    adblock.parentNode.removeChild(adblock);
+                }
+            } else { clearInterval(repetir); exit(0); }
         }
         if (document.querySelectorAll('div[id^=adblock]').length > 0) {
-            for (sa_x = 0; sa_x < document.querySelectorAll('div[id^=adblock]').length; sa_x++) {
-                var adblock2 = document.querySelectorAll('div[id^=adblock]')[sa_x];
-                adblock2.parentNode.removeChild(adblock2);
-            }
+            if (confirm(self.window.location.protocol+"//"+self.window.location.host+"/*\n\r6.Remover Modal?")) {
+                for (sa_x = 0; sa_x < document.querySelectorAll('div[id^=adblock]').length; sa_x++) {
+                    var adblock2 = document.querySelectorAll('div[id^=adblock]')[sa_x];
+                    adblock2.parentNode.removeChild(adblock2);
+                }
+            } else { clearInterval(repetir); exit(0); }
         }
         for (escuro = 0; escuro < document.querySelectorAll('div').length; escuro++) {
-            if (document.querySelectorAll('div')[escuro].style.zIndex > 99999) {
+            if (document.querySelectorAll('div')[escuro].style.zIndex > 9999) {
                 document.querySelectorAll('div')[escuro].style.display = "none";
             }
+        }
+        // -- https://dotesports.com/mmo/news/where-to-find-iron-ore-and-iron-ore-veins-in-new-world
+        if (document.querySelectorAll('iframe[id*=google_ads_iframe]').length > 0) {
+            document.querySelectorAll('iframe[id*=google_ads_iframe]')[0].parentElement.remove();
         }
     }, 1500);
 
     jQuery(document).ready(function($){ // jQuery $ is not defined
 
-    // d3planner.com
-    setInterval(function () {
-        //document.getElementById("right-banner").style('display','hidden');
-        $("#right-banner").hide();
-        //document.getElementById("left-banner").style('display','hidden');
-        $("#left-banner").hide();
-    if (document.querySelectorAll('script:last-child').length > 0) {
-        if (document.querySelectorAll('script:last-child')[1] == "undefined") {
-            document.querySelectorAll('script:last-child')[1].remove();
-        }
-    }}, 900);
+        // d3planner.com
+        setInterval(function () {
+            //document.getElementById("right-banner").style('display','hidden');
+            $("#right-banner").hide();
+            //document.getElementById("left-banner").style('display','hidden');
+            $("#left-banner").hide();
+            if (document.querySelectorAll('script:last-child').length > 0) {
+                if (document.querySelectorAll('script:last-child')[1] == "undefined") {
+                    document.querySelectorAll('script:last-child')[1].remove();
+                }
+            }}, 900);
 
-    // gamepedia.com
-    setInterval(function () {
-        if (document.querySelectorAll('div#siderail_outward_gamepedia').length > 0) {
-            for (gp = 0; gp < document.querySelectorAll('div#siderail_outward_gamepedia').length; gp++) {
-                document.querySelectorAll('div#siderail_outward_gamepedia')[gp].remove();
+        // gamepedia.com
+        setInterval(function () {
+            if (document.querySelectorAll('div#siderail_outward_gamepedia').length > 0) {
+                for (gp = 0; gp < document.querySelectorAll('div#siderail_outward_gamepedia').length; gp++) {
+                    document.querySelectorAll('div#siderail_outward_gamepedia')[gp].remove();
+                }
             }
-        }
-    }, 900);
+        }, 900);
 
-    /*
+        /*
     if (document.querySelectorAll('iframe[id^="google"]').length > 0) {
         for (var g = 0; g < document.querySelectorAll('iframe[id^="google"]').length; g++) {
             var remova = document.querySelectorAll('iframe[id^="google"]')[g].id;
@@ -265,7 +287,7 @@
     }
     */
 
-    /*
+        /*
     var x = 0, modal = 0; // Remove Modal All
     for (x=0; x < document.querySelectorAll('[class^="modal"]').length; x++) {
         document.querySelectorAll('[class^="modal"]')[x].style.display = 'none';
@@ -279,23 +301,23 @@
     }
     */
 
-    if (jQuery('body:contains("http://www.wikihow.com/Disable-Adblock")').length) {
-        var healerReplaced = $('body').html().replace(/\<style\>#(.*?)\{/gi, '#stopHacker{');
-        jQuery('body').html(healerReplaced);
-    }
-
-    if (jQuery('body:contains("adblocker")').length) {
-        var healerReplacedd = $('body').html().replace(/\<style\>#(.*?)\{/gi, '#stopHacker{');
-        jQuery('body').html(healerReplacedd);
-    }
-
-    for (f=0; f < document.querySelectorAll('div').length; f++) {
-        if (document.querySelectorAll('div')[f].classList.value.indexOf('adblock') > 0) {
-            document.querySelectorAll('div')[f].style.display = 'none';
+        if (jQuery('body:contains("http://www.wikihow.com/Disable-Adblock")').length) {
+            var healerReplaced = $('body').html().replace(/\<style\>#(.*?)\{/gi, '#stopHacker{');
+            jQuery('body').html(healerReplaced);
         }
-    }
 
-    });
+        if (jQuery('body:contains("adblocker")').length) {
+            var healerReplacedd = $('body').html().replace(/\<style\>#(.*?)\{/gi, '#stopHacker{');
+            jQuery('body').html(healerReplacedd);
+        }
+
+        for (f=0; f < document.querySelectorAll('div').length; f++) {
+            if (document.querySelectorAll('div')[f].classList.value.indexOf('adblock') > 0) {
+                document.querySelectorAll('div')[f].style.display = 'none';
+            }
+        }
+
+    }); // -- End jQuery
 
     // ativar scroll
     // document.body.style.overflow = "auto";
@@ -315,7 +337,7 @@
     document.oncontextmenu = function() {};
     document.onselectstart = function() {};
 
-    console.log('>>>>>>>>>>>> Rodou Save Adblock com sucesso.');
+    console.log('>>>>>>>>>>>> Rodou Save Anti-Modal com sucesso.');
     console.log(self.window.location.protocol+"//"+self.window.location.host+"/*");
 
 })();
