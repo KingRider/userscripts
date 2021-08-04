@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Mostrar a senha F8
 // @namespace    http://sandroalvares.com.br
-// @version      1.52
+// @version      1.55
 // @description  Mostrar a senha para alerta
 // @author       KingRider
 // @match        http*://*/*
@@ -18,10 +18,13 @@
     document.onkeydown = function(evt) {
         document.onkeyup = function(event) {
             if (event.key == "F2" || event.keyCode == 119){ // https://keycode.info/
-                if (document.querySelectorAll('input[type=password]')[0].value != "") {
-                    var x = 0, texto = "";
+                if (document.querySelectorAll('input[type=password]').length > 0) {
+                    var x = 0, conta = 1; texto = "";
                     for (x=0; x<document.querySelectorAll('input[type=password]').length; x++) {
-                        texto += (x+1)+"º) "+document.querySelectorAll('input[type=password]')[x].value+"\r\n";
+                        if (document.querySelectorAll('input[type=password]')[x].value != "") {
+                            texto += (conta)+"º) "+document.querySelectorAll('input[type=password]')[x].value+"\r\n";
+                            conta++;
+                        }
                     }
                     alert(texto);
                     /*
