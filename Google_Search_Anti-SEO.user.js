@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Google_Search_Anti-SEO
 // @namespace    http://sandroalvares.com.br
-// @version      5.25
+// @version      5.30
 // @description  Google Anti-SEO Links without Adblock - Menos Anuncio
-// @author       KingRider 2010 a 2020
+// @author       KingRider 2010 a atual
 
 // @match        http*://*.google.com/search?*
 // @match        http*://*.google.com.br/search?*
@@ -21,7 +21,7 @@ if (jQuery) {
     $(document).ready(function() {
 
         //$(document).bind('keyup.f4', function() {
-        setTimeout(function() {
+        setInterval(function() {
             var x = 0, y = 0, z = 0, xx = 0, xy = 0, temp = '';
 
             /*
@@ -45,7 +45,7 @@ if (jQuery) {
                 $('[onmousedown]').removeAttr('onmousedown');
                 //temp = $($("span:contains('Anúncio')").parent()[y]).text().substr(+);
                 if ($("a span:contains('Anúncio')").parent().parent()[y]) {
-                    temp = $("a span:contains('Anúncio')").parent().parent()[y].href;
+                    temp = $("a span:contains('Anúncio')").parent().parent()[0].dataset.pcu.split(',')[0]; //$("a span:contains('Anúncio')").parent().parent()[y].href;
                     if (temp) {
                         if ($($("span:contains('Anúncio')").parent().parent()[y]).length) {
                             $($("span:contains('Anúncio')").parent().parent()[y])[0].href = temp;
@@ -54,6 +54,12 @@ if (jQuery) {
                         if ($($("span:contains('Anúncio')").parent().parent()[y]).prev().length) {
                             $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href = temp;
                             $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href = $($("span:contains('Anúncio')").parent().parent()[y]).prev()[0].href.replace(/%E2%80%8E/g, "");
+                        }
+                        if ($('a[data-pcu]').length) {
+                            $('a[data-pcu]')[y].href = temp;
+                            $('a[data-pcu]')[0].dataset.rw = temp;
+                            $('a[data-pcu]')[0].dataset.pfu = temp;
+                            console.log('['+y+'] '+temp);
                         }
                     }
                 }
@@ -86,10 +92,10 @@ if (jQuery) {
                 if ($('li.ads\-ad').length) {
                     $('li.ads\-ad').remove();
                 }
-            }, 700);
+            }, 1200);
             //console.log($.now());
 
-        }, 500);
+        }, 2000);
 
         if (window.location.pathname == "/url" && document.body.innerText.search('Aviso de redirecionamento') === 0) {
             window.location.href = unescape(window.location.search.replace("?hl=pt-BR&amp;q=", ""));
