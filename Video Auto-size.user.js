@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Video Auto-size
 // @namespace    http://www.sandroalvares.com.br
-// @version      0.611
+// @version      0.62
 // @description  Auto-size @2021
 // @author       Sandro Alvares
 // @include      http*://*.band.uol.com.br/ao-vivo*
@@ -156,19 +156,18 @@
         conta++;
         */
     }, 1500);
-    /*
+    // Brave Ads
     var texto = "";
     var teste = setInterval(function() {
         if (frames.length > 0) {
             for (var w=0; w < frames.length; w++) {
                 if (frames[w]) {
-                    texto += w+") "+frames[w].location.href+"\n";
-                    console.log(w+") "+frames[w].location.href);
+                    if (document.querySelectorAll('iframe')[w].id != 'myFrame') {
+                        var temp = document.querySelectorAll('iframe')[w]; temp.parentNode.removeChild(temp);
+                    }
                 }
             }
-            alert(texto);
-            clearInterval(teste);
+            //clearInterval(teste);
         }
     }, 10000);
-    */
 })();
