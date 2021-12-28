@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Video Auto-size
 // @namespace    http://www.sandroalvares.com.br
-// @version      0.62
+// @version      0.70
 // @description  Auto-size @2021
 // @author       Sandro Alvares
 // @include      http*://*.band.uol.com.br/ao-vivo*
@@ -10,6 +10,7 @@
 // @include      http*://futeboltotal.net.br/assistir*
 // @include      http*://futeboltotal.org/assistir*
 // @include      http*://www.xvideos.com/*
+// @include      http*://www.xnxx.com/*
 // @include      http*://redecanaistv.net/*
 // @grant        none
 
@@ -31,6 +32,11 @@
             }
             if (document.querySelectorAll('h2.title').length > 0) {
                 document.querySelectorAll('h2.title')[0].style.color = 'white';
+            }
+            for (var y=0; y < document.querySelectorAll('div').length; y++) {
+                if (document.querySelectorAll('div')[y].style.zIndex > 0) {
+                    document.querySelectorAll('div')[y].style.display = 'none';
+                }
             }
             document.body.style.background = '#262626';
             clearInterval(tempo);
@@ -146,8 +152,23 @@
         }
         // xvideos.com
         if (window.location.href.indexOf('xvideos.com') > 0) {
-            document.querySelectorAll('div#video-ad')[0].nextElementSibling.style.display = 'none';
-            document.assistirplayer.submit();
+            if (document.querySelectorAll('div#video\-ad').length > 0) {
+                document.querySelectorAll('div#video\-ad')[0].nextElementSibling.style.display = 'none';
+                if (document.assistirplayer) {
+                    document.assistirplayer.submit();
+                }
+                document.querySelectorAll('img[title="Tamanho do player duplo"]')[0].click();
+            }
+        }
+        // xnxx.com
+        if (window.location.href.indexOf('xnxx.com') > 0) {
+            if (document.querySelectorAll('div#video\-ad').length > 0) {
+                document.querySelectorAll('div#video\-ad')[0].nextElementSibling.style.display = 'none';
+                if (document.assistirplayer) {
+                    document.assistirplayer.submit();
+                }
+                document.querySelectorAll('img[title="Tamanho do player duplo"]')[0].click();
+            }
         }
         /*
         if (conta >= 10) {
@@ -162,7 +183,8 @@
         if (frames.length > 0) {
             for (var w=0; w < frames.length; w++) {
                 if (frames[w]) {
-                    if (document.querySelectorAll('iframe')[w].id != 'myFrame') {
+                    if (document.querySelectorAll('iframe')[w].id != 'myFrame' && document.querySelectorAll('iframe')[w].id != 'streamIframe') {
+                    //if (document.querySelectorAll('iframe')[w].src == "" && document.querySelectorAll('iframe')[w].src == "about:blank") {
                         var temp = document.querySelectorAll('iframe')[w]; temp.parentNode.removeChild(temp);
                     }
                 }
