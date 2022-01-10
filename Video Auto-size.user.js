@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Video Auto-size
 // @namespace    http://www.sandroalvares.com.br
-// @version      0.70
-// @description  Auto-size @2021
+// @version      0.76
+// @description  Auto-size @2021 + 2022
 // @author       Sandro Alvares
 // @include      http*://*.band.uol.com.br/ao-vivo*
 // @include      http*://*.sbt.com.br/ao-vivo*
@@ -74,7 +74,14 @@
         // FutebolTotal-org
         if (window.location.href.indexOf('futeboltotal.org') > 0) {
             if (top.document.querySelectorAll('div.elementor-section-wrap section').length > 0) {
-                top.document.querySelectorAll('header')[0].style.display = 'none';
+                if (document.querySelectorAll('div.elementor-col-100').length > 0) {
+                    for (var q=0; q < document.querySelectorAll('div.elementor-col-100').length-1; q++) {
+                        top.document.querySelectorAll('div.elementor-col-100')[q].style.display = 'none';
+                    }
+                }
+                if (top.document.querySelectorAll('header').length > 0) {
+                    top.document.querySelectorAll('header')[0].style.display = 'none';
+                }
                 top.document.body.style.background = '#363636';
                 top.document.querySelectorAll('div.elementor-section-wrap')[0].style.display = 'none';
                 if (top.document.querySelectorAll('div figure').length > 0) {
@@ -85,6 +92,9 @@
                 top.document.querySelectorAll('div.elementor-section-wrap section')[2].style.display = 'none';
                 top.document.querySelectorAll('div.elementor-section-wrap section')[3].style.display = 'none';
                 top.document.querySelectorAll('div.elementor-section-wrap section')[4].style.display = 'none';
+                if (top.document.querySelectorAll('button[title="Play Video"]').length > 0) {
+                    top.document.querySelectorAll('button[title="Play Video"]')[0].click();
+                }
                 /*
                 for (var q = 0; q < document.querySelectorAll('div section').length; q++) {
                     top.document.querySelectorAll('div section')[q].style.display = 'none';
@@ -150,24 +160,23 @@
                 top.document.querySelectorAll('div.alert.alert-danger')[0].style.display = 'none';
             }
         }
-        // xvideos.com
-        if (window.location.href.indexOf('xvideos.com') > 0) {
+        // xvideos.com / xnxx.com
+        if (window.location.href.indexOf('xvideos.com') > 0 || window.location.href.indexOf('xnxx.com') > 0) {
             if (document.querySelectorAll('div#video\-ad').length > 0) {
                 document.querySelectorAll('div#video\-ad')[0].nextElementSibling.style.display = 'none';
                 if (document.assistirplayer) {
                     document.assistirplayer.submit();
                 }
-                document.querySelectorAll('img[title="Tamanho do player duplo"]')[0].click();
-            }
-        }
-        // xnxx.com
-        if (window.location.href.indexOf('xnxx.com') > 0) {
-            if (document.querySelectorAll('div#video\-ad').length > 0) {
-                document.querySelectorAll('div#video\-ad')[0].nextElementSibling.style.display = 'none';
-                if (document.assistirplayer) {
-                    document.assistirplayer.submit();
+                if (document.querySelectorAll('div.mobile\-hide').length > 0) {
+                    if (document.querySelectorAll('div.mobile\-hide')[0].style.display == '') {
+                        if (document.querySelectorAll('div#content')[0].classList.value != "player-enlarged") {
+                            document.querySelectorAll('img[title="Tamanho do player duplo"]')[0].click();
+                        }
+                    }
                 }
-                document.querySelectorAll('img[title="Tamanho do player duplo"]')[0].click();
+                if (document.querySelectorAll('img[title="Play"]').length > 0) {
+                    document.querySelectorAll('img[title="Play"]')[1].click();
+                }
             }
         }
         /*
