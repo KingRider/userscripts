@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Video Auto-size
 // @namespace    http://www.sandroalvares.com.br
-// @version      0.76
+// @version      0.78
 // @description  Auto-size @2021 + 2022
 // @author       Sandro Alvares
 // @include      http*://*.band.uol.com.br/ao-vivo*
@@ -73,6 +73,9 @@
         }
         // FutebolTotal-org
         if (window.location.href.indexOf('futeboltotal.org') > 0) {
+            if (top.document.querySelectorAll('button[title="Play Video"]').length > 0) {
+                top.document.querySelectorAll('button[title="Play Video"]')[0].click();
+            }
             if (top.document.querySelectorAll('div.elementor-section-wrap section').length > 0) {
                 if (document.querySelectorAll('div.elementor-col-100').length > 0) {
                     for (var q=0; q < document.querySelectorAll('div.elementor-col-100').length-1; q++) {
@@ -86,14 +89,6 @@
                 top.document.querySelectorAll('div.elementor-section-wrap')[0].style.display = 'none';
                 if (top.document.querySelectorAll('div figure').length > 0) {
                     top.document.querySelectorAll('div figure')[0].style.display = 'none';
-                }
-                top.document.querySelectorAll('div.elementor-section-wrap section')[0].style.display = 'none';
-                top.document.querySelectorAll('div.elementor-section-wrap section')[1].style.display = 'none';
-                top.document.querySelectorAll('div.elementor-section-wrap section')[2].style.display = 'none';
-                top.document.querySelectorAll('div.elementor-section-wrap section')[3].style.display = 'none';
-                top.document.querySelectorAll('div.elementor-section-wrap section')[4].style.display = 'none';
-                if (top.document.querySelectorAll('button[title="Play Video"]').length > 0) {
-                    top.document.querySelectorAll('button[title="Play Video"]')[0].click();
                 }
                 /*
                 for (var q = 0; q < document.querySelectorAll('div section').length; q++) {
