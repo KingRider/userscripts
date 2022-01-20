@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Video Auto-size
 // @namespace    http://www.sandroalvares.com.br
-// @version      0.78
+// @version      0.80
 // @description  Auto-size @2021 + 2022
 // @author       Sandro Alvares
 // @include      http*://*.band.uol.com.br/ao-vivo*
@@ -12,6 +12,8 @@
 // @include      http*://www.xvideos.com/*
 // @include      http*://www.xnxx.com/*
 // @include      http*://redecanaistv.net/*
+// @include      http*://www.sbtvideos.com.br/aovivo
+// @include      http*://tv0800.xyz/canais/assistir-*
 // @grant        none
 
 // updateURL     https://github.com/KingRider/userscripts/raw/master/Video%20Auto-size.user.js
@@ -22,6 +24,21 @@
 (function() {
     var conta = 0;
     var tempo = setInterval(function() {
+        // TV 0800
+        if (window.location.href.indexOf('tv0800.xyz') > 0) {
+            if (document.querySelectorAll('div.content.right').length > 0) {
+                if (document.querySelectorAll('div.div-btns').length > 0) {
+                    document.querySelectorAll('div.div-btns')[0].style.display = 'none'; // botao reportar erro video
+                    //var temp = document.querySelectorAll('div.div-btns')[0]; temp.parentNode.removeChild(temp);
+                }
+                document.querySelectorAll('div.content.right')[0].style.width = '1400px';
+                // Cabeçalho menu top
+                document.querySelectorAll('div.hbox')[0].style.display = 'none';
+                document.querySelectorAll('header#header')[0].style.display = 'none';
+                document.querySelectorAll('div#contenedor')[0].style.margin = '0 auto 0';
+            }
+            clearInterval(tempo);
+        }
         // Band Ao-vivo
         if (window.location.href.indexOf('band.uol') > 0) {
             if (document.querySelectorAll('nav.channel').length > 0) {
@@ -43,6 +60,9 @@
         }
         // SBT
         if (window.location.href.indexOf('sbt.com.br') > 0) {
+            if (document.querySelectorAll('button[type="submit"]').length > 0) {
+                document.querySelectorAll('button[type="submit"]')[5].click();
+            }
             if (document.querySelectorAll('section')[4] != '') {
                 document.getElementsByClassName('header')[0].style.display = 'none';
                 document.querySelectorAll('section.live')[0].style.background = '#363636';
@@ -182,6 +202,7 @@
         */
     }, 1500);
     // Brave Ads
+    /*
     var texto = "";
     var teste = setInterval(function() {
         if (frames.length > 0) {
@@ -196,4 +217,5 @@
             //clearInterval(teste);
         }
     }, 10000);
+    */
 })();
