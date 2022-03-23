@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Video Auto-size
 // @namespace    http://www.sandroalvares.com.br
-// @version      0.80
+// @version      0.88
 // @description  Auto-size @2021 + 2022
 // @author       Sandro Alvares
 // @include      http*://*.band.uol.com.br/ao-vivo*
@@ -14,16 +14,54 @@
 // @include      http*://redecanaistv.net/*
 // @include      http*://www.sbtvideos.com.br/aovivo
 // @include      http*://tv0800.xyz/canais/assistir-*
+// @include      http*://megacanais.com/*-ao-vivo*/*
+// @include      http*://*.nowonline.com.br/player/*/no-ar
 // @grant        none
 
-// updateURL     https://github.com/KingRider/userscripts/raw/master/Video%20Auto-size.user.js
-// downloadURL   https://github.com/KingRider/userscripts/raw/master/Video%20Auto-size.user.js
+// @updateURL     https://github.com/KingRider/userscripts/raw/master/Video%20Auto-size.user.js
+// @downloadURL   https://github.com/KingRider/userscripts/raw/master/Video%20Auto-size.user.js
 
 // ==/UserScript==
 
 (function() {
     var conta = 0;
     var tempo = setInterval(function() {
+        // MegaCanais.com
+        if (window.location.href.indexOf('megacanais.com') > 0) {
+            if (document.querySelectorAll('div.box\-container div.sections\-container div.row\-container').length > 0) {
+                document.querySelectorAll('div.box\-container div.sections\-container div.row\-container')[0].style.display = 'none';
+                document.querySelectorAll('div.post\-body div.post\-content')[0].style.display = 'none';
+                document.querySelectorAll('div.post\-body iframe')[0].style.height = '800px';
+            }
+            clearInterval(tempo);
+        }
+        // nowonline.com.br
+        if (window.location.href.indexOf('nowonline.com.br/player/') > 0) {
+            if (document.querySelectorAll('div[id="player"]')[0].style.width != "1600px") {
+                document.querySelectorAll('div[id="player"]')[0].style.top = "20px";
+                document.querySelectorAll('div[id="player"]')[0].style.left = "170px";
+                document.querySelectorAll('div[id="player"]')[0].style.width = '1600px';
+                document.querySelectorAll('div[id="player"]')[0].style.height = '900px';
+            }
+        }
+        // cdn.lib.bz
+        if (window.location.href.indexOf('cdn.lib.bz') > 0) {
+            if (document.querySelectorAll('form').length > 0) {
+                document.querySelectorAll('form')[0].classList.remove('form');
+            }
+            if (document.querySelectorAll('iframe')[0].width != "1600") {
+                document.querySelectorAll('iframe')[0].width = '1600';
+                document.querySelectorAll('iframe')[0].height = '900';
+            }
+            if (document.querySelectorAll('div.fp\-ui').length > 0) {
+                //document.querySelectorAll('div.fp\-ui')[0].style.display = 'none';
+                document.querySelectorAll('div.fp\-ui')[0].classList.remove('fp\-ui');
+                clearInterval(tempo);
+            }
+            if (document.querySelectorAll('[rel="sponsored"]').length > 0) {
+                document.querySelectorAll('[rel="sponsored"]')[0].classList.remove('sponsored');
+            }
+        }
         // TV 0800
         if (window.location.href.indexOf('tv0800.xyz') > 0) {
             if (document.querySelectorAll('div.content.right').length > 0) {
@@ -36,6 +74,10 @@
                 document.querySelectorAll('div.hbox')[0].style.display = 'none';
                 document.querySelectorAll('header#header')[0].style.display = 'none';
                 document.querySelectorAll('div#contenedor')[0].style.margin = '0 auto 0';
+                // Adblock Detected?
+                document.querySelectorAll('div.is-detected')[0].style.display = 'none';
+                // Texto Lateral Direita
+                document.querySelectorAll('div.sidebar.right.scrolling')[0].style.display = 'none';
             }
             clearInterval(tempo);
         }
@@ -45,7 +87,7 @@
                 document.querySelectorAll('nav.channel')[0].style.display = 'none';
             }
             if (document.querySelectorAll('iframe').length > 0) {
-                document.querySelectorAll('iframe')[0].parentElement.style.width = '1250px';
+                document.querySelectorAll('iframe')[0].parentElement.style.width = '1400px';
             }
             if (document.querySelectorAll('h2.title').length > 0) {
                 document.querySelectorAll('h2.title')[0].style.color = 'white';
@@ -67,8 +109,8 @@
                 document.getElementsByClassName('header')[0].style.display = 'none';
                 document.querySelectorAll('section.live')[0].style.background = '#363636';
             }
-            if (document.querySelectorAll('section')[4].style.width = "1250px") {
-                document.querySelectorAll('section')[4].style = "width: 1250px; margin-left: -150px;";
+            if (document.querySelectorAll('section')[4].style.width = "1400px") {
+                document.querySelectorAll('section')[4].style = "width: 1400px; margin-left: -150px;";
             }
             clearInterval(tempo);
         }
@@ -105,11 +147,16 @@
                 if (top.document.querySelectorAll('header').length > 0) {
                     top.document.querySelectorAll('header')[0].style.display = 'none';
                 }
-                top.document.body.style.background = '#363636';
-                top.document.querySelectorAll('div.elementor-section-wrap')[0].style.display = 'none';
+                if (top.document.body.style.background == '') {
+                    top.document.body.style.background = '#363636';
+                }
+                if (top.document.querySelectorAll('div.elementor-section-wrap').length > 0) {
+                    top.document.querySelectorAll('div.elementor-section-wrap')[0].style.display = 'none';
+                }
                 if (top.document.querySelectorAll('div figure').length > 0) {
                     top.document.querySelectorAll('div figure')[0].style.display = 'none';
                 }
+                //top.document.querySelectorAll('div.vjs-control-bar')[0].classList.remove('vjs-control-bar');
                 /*
                 for (var q = 0; q < document.querySelectorAll('div section').length; q++) {
                     top.document.querySelectorAll('div section')[q].style.display = 'none';
