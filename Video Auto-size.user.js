@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Video Auto-size
 // @namespace    http://www.sandroalvares.com.br
-// @version      0.90
+// @version      0.91
 // @description  Auto-size @2021 + 2022
 // @author       Sandro Alvares
 // @match        http*://*.band.uol.com.br/ao-vivo*
@@ -89,7 +89,7 @@
                 document.querySelectorAll('nav.channel')[0].style.display = 'none';
             }
             if (document.querySelectorAll('iframe').length > 0) {
-                document.querySelectorAll('iframe')[0].parentElement.style.width = '1400px';
+                document.querySelectorAll('iframe')[0].parentElement.style.width = '1200px';
             }
             if (document.querySelectorAll('h2.title').length > 0) {
                 document.querySelectorAll('h2.title')[0].style.color = 'white';
@@ -99,6 +99,7 @@
                     document.querySelectorAll('div')[y].style.display = 'none';
                 }
             }
+            document.querySelectorAll('div#barrauol')[0].style.display = 'none'
             document.body.style.background = '#262626';
             clearInterval(tempo);
         }
@@ -136,7 +137,7 @@
                 top.document.querySelectorAll('iframe#streamIframe')[0].height = '704';
                 //document.querySelectorAll('section')[4].style = "width: 1250px; margin-left: -150px;";
             }
-            top.document.querySelectorAll('div.play-wrapper')[0].click();
+            //top.document.querySelectorAll('div.play-wrapper')[0].click();
         }
         // FutebolTotal-org
         if (window.location.href.indexOf('futeboltotal.org') > 0) {
