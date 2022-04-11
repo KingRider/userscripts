@@ -1,21 +1,22 @@
 // ==UserScript==
 // @name         Video Auto-size
 // @namespace    http://www.sandroalvares.com.br
-// @version      0.88
+// @version      0.90
 // @description  Auto-size @2021 + 2022
 // @author       Sandro Alvares
-// @include      http*://*.band.uol.com.br/ao-vivo*
-// @include      http*://*.sbt.com.br/ao-vivo*
-// @include      http*://multicanais.tv/*
-// @include      http*://futeboltotal.net.br/assistir*
-// @include      http*://futeboltotal.org/assistir*
-// @include      http*://www.xvideos.com/*
-// @include      http*://www.xnxx.com/*
-// @include      http*://redecanaistv.net/*
-// @include      http*://www.sbtvideos.com.br/aovivo
-// @include      http*://tv0800.xyz/canais/assistir-*
-// @include      http*://megacanais.com/*-ao-vivo*/*
-// @include      http*://*.nowonline.com.br/player/*/no-ar
+// @match        http*://*.band.uol.com.br/ao-vivo*
+// @match        http*://*.sbt.com.br/ao-vivo*
+// @match        http*://multicanais.tv/*
+// @match        http*://futeboltotal.net.br/assistir*
+// @match        http*://futeboltotal.org/assistir*
+// @match        http*://www.xvideos.com/*
+// @match        http*://www.xnxx.com/*
+// @match        http*://redecanaistv.net/*
+// @match        http*://www.sbtvideos.com.br/aovivo
+// @match        http*://tv0800.xyz/canais/assistir-*
+// @match        http*://tvfree.xyz/canais/assistir-*
+// @match        http*://megacanais.com/*-ao-vivo*/*
+// @match        http*://*.nowonline.com.br/player/*/no-ar
 // @grant        none
 
 // @updateURL     https://github.com/KingRider/userscripts/raw/master/Video%20Auto-size.user.js
@@ -38,7 +39,7 @@
         // nowonline.com.br
         if (window.location.href.indexOf('nowonline.com.br/player/') > 0) {
             if (document.querySelectorAll('div[id="player"]')[0].style.width != "1600px") {
-                document.querySelectorAll('div[id="player"]')[0].style.top = "20px";
+                document.querySelectorAll('div[id="player"]')[0].style.top = "10px";
                 document.querySelectorAll('div[id="player"]')[0].style.left = "170px";
                 document.querySelectorAll('div[id="player"]')[0].style.width = '1600px';
                 document.querySelectorAll('div[id="player"]')[0].style.height = '900px';
@@ -63,13 +64,14 @@
             }
         }
         // TV 0800
-        if (window.location.href.indexOf('tv0800.xyz') > 0) {
+        // tvfree
+        if (window.location.href.indexOf('tv0800.xyz') > 0 || window.location.href.indexOf('tvfree.xyz') > 0) {
             if (document.querySelectorAll('div.content.right').length > 0) {
                 if (document.querySelectorAll('div.div-btns').length > 0) {
                     document.querySelectorAll('div.div-btns')[0].style.display = 'none'; // botao reportar erro video
                     //var temp = document.querySelectorAll('div.div-btns')[0]; temp.parentNode.removeChild(temp);
                 }
-                document.querySelectorAll('div.content.right')[0].style.width = '1400px';
+                document.querySelectorAll('div.content.right')[0].style.width = '1200px';
                 // Cabeçalho menu top
                 document.querySelectorAll('div.hbox')[0].style.display = 'none';
                 document.querySelectorAll('header#header')[0].style.display = 'none';
@@ -119,6 +121,8 @@
             if (top.document.querySelectorAll('div.elementor-section-wrap section').length > 0) {
                 top.document.querySelectorAll('div.elementor-section-wrap section')[0].style.display = 'none';
                 top.document.querySelectorAll('div nav')[0].style.display = 'none';
+                top.document.querySelectorAll('div.elementor-row')[3].style.display = 'none';
+                top.document.querySelectorAll('div.elementor-row')[4].style.display = 'none';
                 //top.document.body.style.background = '#363636';
             }
             var fut = 0;
@@ -132,6 +136,7 @@
                 top.document.querySelectorAll('iframe#streamIframe')[0].height = '704';
                 //document.querySelectorAll('section')[4].style = "width: 1250px; margin-left: -150px;";
             }
+            top.document.querySelectorAll('div.play-wrapper')[0].click();
         }
         // FutebolTotal-org
         if (window.location.href.indexOf('futeboltotal.org') > 0) {
