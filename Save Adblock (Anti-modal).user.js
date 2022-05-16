@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Save Adblock (Anti-modal)
 // @namespace    http://www.sandroalvares.com.br
-// @version      v4.6610
+// @version      v4.6670
 // @description  Save Adblock
 // @author       KingRider
 // @connect      *
@@ -180,12 +180,18 @@
 // @exclude      https://player.band.com.br/*
 // @exclude      http*://*.primevideo.com/*
 // @exclude      http*://*.dafiti.com.br/*
+// @exclude      http*://keep.google.com/*
+// @exclude      http*://*.eveonline.com/*
+// @exclude      http*://*.lgaccount.com/*
+// @exclude      http*://*.cremesp.org.br/*
+// @exclude      http*://*.google.com/maps/*
+// @exclude      http*://*.dampyo.com/*
 
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
 
-// updateURL     https://github.com/KingRider/userscripts/raw/master/Save%20Adblock%20(Anti-modal).user.js
-// downloadURL   https://github.com/KingRider/userscripts/raw/master/Save%20Adblock%20(Anti-modal).user.js
+// @updateURL     https://github.com/KingRider/userscripts/raw/master/Save%20Adblock%20(Anti-modal).user.js
+// @downloadURL   https://github.com/KingRider/userscripts/raw/master/Save%20Adblock%20(Anti-modal).user.js
 
 // ==/UserScript==
 
@@ -311,13 +317,19 @@
             jQuery('body').html(healerReplacedd);
         }
 
-        for (f=0; f < document.querySelectorAll('div').length; f++) {
+        for (var f=0; f < document.querySelectorAll('div').length; f++) {
             if (document.querySelectorAll('div')[f].classList.value.indexOf('adblock') > 0) {
                 document.querySelectorAll('div')[f].style.display = 'none';
             }
         }
 
     }); // -- End jQuery
+
+    // Dampyo
+    for (var damp=0; damp < document.querySelectorAll('div[class~="2xl:block"]').length; damp++) {
+        var adblock3 = document.querySelectorAll('div[class~="2xl:block"]');
+        adblock3.parentNode.removeChild(adblock3);
+    }
 
     // ativar scroll
     // document.body.style.overflow = "auto";
