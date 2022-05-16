@@ -185,7 +185,6 @@
 // @exclude      http*://*.lgaccount.com/*
 // @exclude      http*://*.cremesp.org.br/*
 // @exclude      http*://*.google.com/maps/*
-// @exclude      http*://*.dampyo.com/*
 
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
@@ -324,12 +323,6 @@
         }
 
     }); // -- End jQuery
-
-    // Dampyo
-    for (var damp=0; damp < document.querySelectorAll('div[class~="2xl:block"]').length; damp++) {
-        var adblock3 = document.querySelectorAll('div[class~="2xl:block"]');
-        adblock3.parentNode.removeChild(adblock3);
-    }
 
     // ativar scroll
     // document.body.style.overflow = "auto";
