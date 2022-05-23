@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Video Auto-size
 // @namespace    http://www.sandroalvares.com.br
-// @version      0.92
+// @version      0.96
 // @description  Auto-size @2021 + 2022
 // @author       Sandro Alvares
 // @match        http*://*.band.uol.com.br/ao-vivo*
@@ -17,6 +17,7 @@
 // @match        http*://tvfree.xyz/canais/assistir-*
 // @match        http*://megacanais.com/*-ao-vivo*/*
 // @match        http*://*.nowonline.com.br/player/*/no-ar
+// @match        http*://globoplay.globo.com/tv-globo/ao-vivo/*
 // @grant        none
 
 // @updateURL     https://github.com/KingRider/userscripts/raw/master/Video%20Auto-size.user.js
@@ -50,6 +51,15 @@
                         document.querySelectorAll('div.wrap-loader')[now].display = 'none';
                     }
                 }
+            }
+        }
+        // globoplay.globo.com
+        if (window.location.href.indexOf('globoplay.globo.com/tv-globo/ao-vivo/') > 0) {
+            if (document.querySelectorAll('header.header')[0].style.display != "none") {
+                document.querySelectorAll('header.header')[0].style.display = "none";
+            }
+            if (document.querySelectorAll('div.media-control-panel__front-layer')[0].style.display != "none") {
+                document.querySelectorAll('div.media-control-panel__front-layer')[0].style.display = "none";
             }
         }
         // cdn.lib.bz
