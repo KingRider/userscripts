@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Video Auto-size
 // @namespace    http://www.sandroalvares.com.br
-// @version      0.96
+// @version      1.05
 // @description  Auto-size @2021 + 2022
 // @author       Sandro Alvares
 // @match        http*://*.band.uol.com.br/ao-vivo*
@@ -12,11 +12,12 @@
 // @match        http*://www.xvideos.com/*
 // @match        http*://www.xnxx.com/*
 // @match        http*://redecanaistv.net/*
-// @match        http*://www.sbtvideos.com.br/aovivo
+// @match        http*://www.sbtvideos.com.br/aovivo*
 // @match        http*://tv0800.xyz/canais/assistir-*
 // @match        http*://tvfree.xyz/canais/assistir-*
 // @match        http*://megacanais.com/*-ao-vivo*/*
-// @match        http*://*.nowonline.com.br/player/*/no-ar
+// @match        http*://*.nowonline.com.br/player/*/no-ar*
+// @match        http*://*.clarotvmais.com.br/player/*/no-ar*
 // @match        http*://globoplay.globo.com/tv-globo/ao-vivo/*
 // @grant        none
 
@@ -37,8 +38,8 @@
             }
             clearInterval(tempo);
         }
-        // nowonline.com.br
-        if (window.location.href.indexOf('nowonline.com.br/player/') > 0) {
+        // nowonline.com.br / clarotvmais.com.br
+        if (window.location.href.indexOf('nowonline.com.br/player/') > 0 || window.location.href.indexOf('clarotvmais.com.br/player/') > 0) {
             if (document.querySelectorAll('div[id="player"]')[0].style.width != "1600px") {
                 document.querySelectorAll('div[id="player"]')[0].style.top = "10px";
                 document.querySelectorAll('div[id="player"]')[0].style.left = "170px";
@@ -51,6 +52,9 @@
                         document.querySelectorAll('div.wrap-loader')[now].display = 'none';
                     }
                 }
+            }
+            if (document.querySelectorAll('span.play-active').length > 0) {
+                document.querySelectorAll('span.play-active')[0].click();
             }
         }
         // globoplay.globo.com
