@@ -1,12 +1,14 @@
 // ==UserScript==
 // @name         Video Auto-size
 // @namespace    http://www.sandroalvares.com.br
-// @version      1.05
+// @version      1.12
 // @description  Auto-size @2021 + 2022
 // @author       Sandro Alvares
 // @match        http*://*.band.uol.com.br/ao-vivo*
 // @match        http*://*.sbt.com.br/ao-vivo*
 // @match        http*://multicanais.tv/*
+// @match        http*://multicanais.vip/*
+// @match        http*://multicanais.video/*
 // @match        http*://futeboltotal.net.br/assistir*
 // @match        http*://futeboltotal.org/assistir*
 // @match        http*://www.xvideos.com/*
@@ -19,6 +21,7 @@
 // @match        http*://*.nowonline.com.br/player/*/no-ar*
 // @match        http*://*.clarotvmais.com.br/player/*/no-ar*
 // @match        http*://globoplay.globo.com/tv-globo/ao-vivo/*
+// @match        http*://www.playplus.com/live/liveEvent/*
 // @grant        none
 
 // @updateURL     https://github.com/KingRider/userscripts/raw/master/Video%20Auto-size.user.js
@@ -64,6 +67,26 @@
             }
             if (document.querySelectorAll('div.media-control-panel__front-layer')[0].style.display != "none") {
                 document.querySelectorAll('div.media-control-panel__front-layer')[0].style.display = "none";
+            }
+        }
+        // www.playplus.com/live
+        if (window.location.href.indexOf('www.playplus.com/live/liveEvent/') > 0) {
+            document.querySelectorAll('div.fixed-top')[0].style.display = 'none';
+            document.querySelectorAll('div.nav-space[data-page="onair"]')[0].style.marginTop = 0;
+            document.querySelectorAll('header.video-container')[0].style.marginTop = 0;
+            document.querySelectorAll('header.video-container')[0].style.paddingTop = 0;
+            if (document.querySelectorAll('header.video-container div.row.justify-content-center')[0].style.width != "2222px") {
+                document.querySelectorAll('header.video-container div.row.justify-content-center')[0].style.display = "block";
+                document.querySelectorAll('header.video-container div.row.justify-content-center')[0].style.width = "2222px";
+                document.querySelectorAll('header.video-container div.row.justify-content-center')[0].style.marginTop = "15px";
+                document.querySelectorAll('header.video-container div.row.justify-content-center')[0].style.marginLeft = "15px";
+                setInterval(function(){
+                    window.scrollBy(-1000,-1000);
+                }, 3000);
+                document.body.style.background = '#262626';
+            }
+            if (document.querySelectorAll('header.video-container div.player')[0].style.width != "100%") {
+                document.querySelectorAll('header.video-container div.player')[0].style.width = '100%';
             }
         }
         // cdn.lib.bz
@@ -214,7 +237,7 @@
                 //document.querySelectorAll('section')[4].style = "width: 1250px; margin-left: -150px;";
             }
         }
-        // Multicanais.tv
+        // Multicanais.tv / Multicanais.vip
         if (window.location.href.indexOf('multicanais') > 0) {
             if (document.querySelectorAll('body header').length > 0) {
                 document.querySelectorAll('body header')[0].hidden = true;
