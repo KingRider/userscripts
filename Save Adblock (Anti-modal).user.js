@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Save Adblock (Anti-modal)
 // @namespace    http://www.sandroalvares.com.br
-// @version      v4.6670
+// @version      v4.90
 // @description  Save Adblock
 // @author       KingRider
 // @connect      *
@@ -185,6 +185,17 @@
 // @exclude      http*://*.lgaccount.com/*
 // @exclude      http*://*.cremesp.org.br/*
 // @exclude      http*://*.google.com/maps/*
+// @exclude      http*://relogioonline.com.br/*
+// @exclude      http*://globoplay.globo.com/*
+// @exclude      https://translate.google.com/*
+// @exclude      https://translate.google.com/*
+// @exclude      http*://*/captcha/*
+// @exclude      http*://*/*/captcha/*
+// @exclude      http*://*/*/*/captcha/*
+// @exclude      http*://auth.*.*/*
+// @exclude      http*://*.mir4global.com/*
+// @exclude      http*://*.netmarble.com/*
+// @exclude      http*://discord.com/*
 
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @grant        none
@@ -338,6 +349,16 @@
             .css('user-select', 'none')
             .on('selectstart', false);
     };
+
+    setTimeout(function() {
+        for (var ads=0; ads < top.document.querySelectorAll('div.jconfirm span').length; ads++) {
+            if (top.document.querySelectorAll('div.jconfirm span')[ads].innerText.toLowerCase().indexOf('adblocker') > 5) {
+                top.document.querySelectorAll('div.jconfirm')[0].style.display = 'none';
+                top.document.body.style.overflow = 'initial';
+                top.document.querySelectorAll('html')[0].style.overflow = 'initial';
+            }
+        }
+    }, 2000);
 
     document.oncontextmenu = function() {};
     document.onselectstart = function() {};
