@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Video Auto-size
 // @namespace    http://www.sandroalvares.com.br
-// @version      1.13
+// @version      1.14
 // @description  Auto-size @2021 + 2022
 // @author       Sandro Alvares
 // @match        http*://*.band.uol.com.br/ao-vivo*
@@ -18,6 +18,7 @@
 // @match        http*://tv0800.xyz/canais/assistir-*
 // @match        http*://tvfree.xyz/canais/assistir-*
 // @match        http*://megacanais.com/*-ao-vivo*/*
+// @match        http*://multicanais.top/assistir-*
 // @match        http*://*.nowonline.com.br/player/*/no-ar*
 // @match        http*://*.clarotvmais.com.br/player/*/no-ar*
 // @match        http*://globoplay.globo.com/tv-globo/ao-vivo/*
@@ -83,6 +84,7 @@
                 setInterval(function(){
                     if (document.querySelectorAll('div[title="Toggle Play"] i.fa.fa-play').length > 0) {
                         document.querySelectorAll('div[title="Toggle Play"] i.fa.fa-play')[0].click();
+                        dataLayerPlayPauseClick();
                     }
                     window.scrollBy(-1000,-1000);
                 }, 3000);
