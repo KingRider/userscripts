@@ -1,14 +1,15 @@
 // ==UserScript==
 // @name         Video Auto-size
 // @namespace    http://www.sandroalvares.com.br
-// @version      1.14
-// @description  Auto-size @2021 + 2022
+// @version      1.15
+// @description  Auto-size @2021 + 2022 + 2023
 // @author       Sandro Alvares
 // @match        http*://*.band.uol.com.br/ao-vivo*
 // @match        http*://*.sbt.com.br/ao-vivo*
 // @match        http*://multicanais.tv/*
 // @match        http*://multicanais.vip/*
 // @match        http*://multicanais.video/*
+// @match        http*://multicanais.top/assistir-*
 // @match        http*://futeboltotal.net.br/assistir*
 // @match        http*://futeboltotal.org/assistir*
 // @match        http*://www.xvideos.com/*
@@ -18,7 +19,6 @@
 // @match        http*://tv0800.xyz/canais/assistir-*
 // @match        http*://tvfree.xyz/canais/assistir-*
 // @match        http*://megacanais.com/*-ao-vivo*/*
-// @match        http*://multicanais.top/assistir-*
 // @match        http*://*.nowonline.com.br/player/*/no-ar*
 // @match        http*://*.clarotvmais.com.br/player/*/no-ar*
 // @match        http*://globoplay.globo.com/tv-globo/ao-vivo/*
@@ -117,20 +117,32 @@
         if (window.location.href.indexOf('tv0800.xyz') > 0 || window.location.href.indexOf('tvfree.xyz') > 0) {
             if (document.querySelectorAll('div.content.right').length > 0) {
                 if (document.querySelectorAll('div.div-btns').length > 0) {
-                    document.querySelectorAll('div.div-btns')[0].style.display = 'none'; // botao reportar erro video
+                    if (document.querySelectorAll('div.div-btns')[0].style.display !== 'none') {
+                        document.querySelectorAll('div.div-btns')[0].style.display = 'none'; // botao reportar erro video
+                    }
                     //var temp = document.querySelectorAll('div.div-btns')[0]; temp.parentNode.removeChild(temp);
                 }
-                document.querySelectorAll('div.content.right')[0].style.width = '1200px';
+                if (document.querySelectorAll('div.content.right')[0].style.width !== '1200px') {
+                    document.querySelectorAll('div.content.right')[0].style.width = '1200px';
+                }
                 // Cabeçalho menu top
-                document.querySelectorAll('div.hbox')[0].style.display = 'none';
-                document.querySelectorAll('header#header')[0].style.display = 'none';
+                if (document.querySelectorAll('div.hbox')[0].style.display !== 'none') {
+                    document.querySelectorAll('div.hbox')[0].style.display = 'none';
+                }
+                if (document.querySelectorAll('header#header')[0].style.display !== 'none') {
+                    document.querySelectorAll('header#header')[0].style.display = 'none';
+                }
                 document.querySelectorAll('div#contenedor')[0].style.margin = '0 auto 0';
                 // Adblock Detected?
-                document.querySelectorAll('div.is-detected')[0].style.display = 'none';
+                if (document.querySelectorAll('div.is-detected')[0].style.display !== 'none') {
+                    document.querySelectorAll('div.is-detected')[0].style.display = 'none';
+                }
                 // Texto Lateral Direita
-                document.querySelectorAll('div.sidebar.right.scrolling')[0].style.display = 'none';
+                if (document.querySelectorAll('div.sidebar.right.scrolling')[0].style.display !== 'none') {
+                    document.querySelectorAll('div.sidebar.right.scrolling')[0].style.display = 'none';
+                }
             }
-            clearInterval(tempo);
+            //clearInterval(tempo);
         }
         // Band Ao-vivo
         if (window.location.href.indexOf('band.uol') > 0) {
