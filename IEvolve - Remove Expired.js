@@ -15,8 +15,8 @@
 
 // @grant        none
 
-// @updateURL     about:blank
-// @downloadURL   about:blank
+// @updateURL     https://raw.githubusercontent.com/KingRider/userscripts/master/IEvolve%20-%20Remove%20Expired.js
+// @downloadURL   https://raw.githubusercontent.com/KingRider/userscripts/master/IEvolve%20-%20Remove%20Expired.js
 
 // ==/UserScript==
 
