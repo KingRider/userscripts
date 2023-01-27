@@ -10,6 +10,9 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=ultimatix.net
 // @grant        none
 
+// @updateURL     https://raw.githubusercontent.com/KingRider/userscripts/master/iEvolve%20-%20Verifica%C3%A7%C3%A3o%20Curso%20(F9).js
+// @downloadURL   https://raw.githubusercontent.com/KingRider/userscripts/master/iEvolve%20-%20Verifica%C3%A7%C3%A3o%20Curso%20(F9).js
+
 // ==/UserScript==
 
 (function() {
