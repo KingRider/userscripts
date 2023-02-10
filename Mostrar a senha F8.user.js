@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Mostrar a senha F8
 // @namespace    http://sandroalvares.com.br
-// @version      1.7
+// @version      2.0
 // @description  Mostrar a senha para alerta
 // @author       KingRider
 // @match        http*://*/*
@@ -28,6 +28,18 @@
                                 conta++;
                             }
                         }
+                        /*
+                        var ativado = setInterval(function() {
+                        */
+                            if (document.querySelector('input[type="password"]').getAttribute('type') == 'password') {
+                                document.querySelector('input[type="password"]').setAttribute('type','text');
+                            }
+                        /*
+                            if (document.querySelector('input[type="password"]').getAttribute('type') == 'text') {
+                                clearInterval(ativado);
+                            }
+                        }, 1500);
+                        */
                         alert(texto);
                         clearInterval(tempof8);
                         /*
