@@ -5,8 +5,7 @@
 // @description  So you can continue browsing ad-free
 // @author       KingRider
 // @match        http*://*/*
-// @exclude      https://docs.google.com/*
-// @exclude      https://translate.google.com/*
+// @exclude      http*://*.google.com/*
 // @grant        none
 
 // @updateURL     https://github.com/KingRider/userscripts/raw/master/Anti%20Adblock%20Detector.user.js
