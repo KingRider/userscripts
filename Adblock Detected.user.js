@@ -9,8 +9,8 @@
 // @exclude      https://translate.google.com/*
 // @grant        none
 
-// @updateURL     0
-// @downloadURL   0
+// @updateURL     https://github.com/KingRider/userscripts/raw/master/Adblock%20Detected.user.js
+// @downloadURL   https://github.com/KingRider/userscripts/raw/master/Adblock%20Detected.user.js
 
 // ==/UserScript==
 
