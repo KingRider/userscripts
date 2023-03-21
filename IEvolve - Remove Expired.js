@@ -1,14 +1,16 @@
 // ==UserScript==
-// @name         IEvolve - Remove Expired
+// @name         iEvolve - Remove Expired
 // @namespace    http://www.sandroalvares.com.br
-// @version      v0.0975
-// @description  TCS Mandatory Course IEvolve with remove expired (including exam answers does not expire)
+// @version      v0.0982
+// @description  TCS Mandatory Course iEvolve with remove expired (including exam answers does not expire)
 // @author       KingRider
 
 // @match        https://ievolvecontent.ultimatix.net/*
 // @match        https://ievolveng.ultimatix.net/ievolve/html/sessionExpired.html
 // @match        https://ievolveng.ultimatix.net/ievolve/pageNotFound
 // @match        https://ievolveng.ultimatix.net/ievolve/coursedetails/*
+// @match        https://ievolveng.ultimatix.net/ievolve/mandatorytrainings
+// @match        https://ievolveng.ultimatix.net/ievolve/myLearnings/courses/inprogress
 // @match        https://ievolveng.ultimatix.net/error/*
 // @match        https://ievolve.ultimatix.net/error/*
 // @match        https://auth.ultimatix.net/error/errorPages/SAG*
@@ -25,11 +27,17 @@
     const repetir = setInterval(function() {
 
         var temp = document.location.href;
-/*
-        if (document.title == 'iEvolve Error') {
-            document.location.href = 'https://ievolveng.ultimatix.net/ievolve/myLearnings/courses/inprogress';
+
+        if (document.title == 'iEvolve Learner Maintenance') {
+            setTimeout(function() {
+                document.location.href = 'https://ievolveng.ultimatix.net/ievolve/myLearnings/courses/inprogress';
+            }, 60000); // 5 minutos
         }
-*/
+        if (document.location.pathname.indexOf('/error/ievolveng_root_downtime') > 5) {
+            setTimeout(function() {
+                document.location.href = 'https://ievolveng.ultimatix.net/ievolve/myLearnings/courses/inprogress';
+            }, 60000); // 5 minutos
+        }
         if (document.location.pathname.indexOf('/sessionExpired') > 5 || document.location.pathname.indexOf('/pageNotFound') > 5) {
             document.location.href = 'https://ievolveng.ultimatix.net/ievolve/mandatorytrainings';
             //document.location.href = '../myLearnings/courses/inprogress';
@@ -46,12 +54,13 @@
         if (document.location.pathname.indexOf('/error/ievolveng_root') > 5 || document.location.pathname.indexOf('/error/errorPages/') > 5 || document.location.pathname.indexOf('/error/ievolve_root_downtime') > 5) {
             setTimeout(function() {
                 document.location.href = 'https://ievolveng.ultimatix.net/ievolve/';
-            }, 60000); // milisegundos em minutos
+            }, 60000); // Exemplo: 3000 milisegundos em 3 segundos
         }
         if (document.location.pathname.indexOf('/coursedetails/') > 5) {
             setTimeout(function() {
                 document.location.reload();
-            }, 50000); // milisegundos em minutos
+                console.log('nova pagina atualizada');
+            }, 40000); // Exemplo: 3000 milisegundos em 3 segundos
         }
 
         // Alerta Advertencia (mouseout) - Ausente (algo erro Enroute)
@@ -222,9 +231,11 @@
                         }
                     }
                     if (document.querySelector('div.modal-body warningBody')) {
-                        if (document.querySelector('div.modal-body warningBody').style.display !== 'none') {
+                        if (document.querySelector('div.modal-body warningBody').style.display !== 'none' && top.document.title == 'OHS Assessment') {
                             if (document.querySelector('div#alertBeginning div.interruptedDiv > p.warnPara2').innerText == 'Click OK to resume.') {
-                                document.querySelector('div#alertBeginning button').click();
+                                setTimeout(function() {
+                                    document.querySelector('div#alertBeginning button').click();
+                                }, 4000);
                                 /* piscando alerta */
                                 document.querySelector('div.modal-body warningBody').style.display = 'none';
                             }
@@ -318,6 +329,12 @@
             if (document.querySelector('div.ng-star-inserted [id^=statusText'+ compl +']').innerText == 'Completed' && document.querySelector('div.ng-star-inserted [id^=crsLaunch'+ compl +']').disabled == false) {
                 document.querySelector('div.ng-star-inserted [id^=crsLaunch'+ compl +']').disabled = true;
                 document.querySelector('div.ng-star-inserted [id^=crsLaunch'+ compl +']').style.cursor = 'not-allowed';
+            }
+        }
+        for (var commpl=0; commpl < document.querySelectorAll('div.ng-star-inserted p[id^=compStatusTxt]').length; commpl++) {
+            if (document.querySelector('div.ng-star-inserted [id^=compStatusTxt'+ commpl +']').innerText == 'Completed' && document.querySelector('div.ng-star-inserted [id^=launchBtn'+ commpl +']').disabled == false) {
+                document.querySelector('div.ng-star-inserted [id^=launchBtn'+ commpl +']').disabled = true;
+                document.querySelector('div.ng-star-inserted [id^=launchBtn'+ commpl +']').style.cursor = 'not-allowed';
             }
         }
 
