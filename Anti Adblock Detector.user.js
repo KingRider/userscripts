@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Adblock Anti-Detected
+// @name         Anti Adblock Detector
 // @namespace    http://sandroalvares.com.br
 // @version      0.1
-// @description  Adblock Anti-detector retirar a tela vermelha
+// @description  Disables anti-adblockers
 // @author       KingRider
 // @match        http*://*/*
 // @exclude      https://docs.google.com/*
