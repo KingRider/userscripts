@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         iEvolve - Remove Expired
 // @namespace    http://www.sandroalvares.com.br
-// @version      v0.0982
+// @version      v0.09821
 // @description  TCS Mandatory Course iEvolve with remove expired (including exam answers does not expire)
 // @author       KingRider
 
@@ -243,7 +243,9 @@
                     }
                     if (document.querySelector('div#alertBeginning div.interruptedDiv > p.warnPara2').innerText == 'Click OK to resume.') {
                         document.querySelector('div#alertBeginning div.interruptedDiv > p.warnPara2').style.display = 'none';
-                        //document.querySelector('div#alertBeginning button').click();
+                        setTimeout(function() {
+                            document.querySelector('div#alertBeginning button').click();
+                        }, 4000);
                     }
                 }
             }
