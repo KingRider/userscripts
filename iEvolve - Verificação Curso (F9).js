@@ -1,12 +1,14 @@
 // ==UserScript==
 // @name         iEvolve - Verificação Curso (F9)
 // @namespace    http://sandroalvares.com.br
-// @version      0.4
+// @version      0.5
 // @description  Mostrar a lista de curso prioridade
 // @author       KingRider
-// @match        https://ievolveng.ultimatix.net/ievolve/mandatorytrainings
-// @match        https://ievolveng.ultimatix.net/ievolve/myLearnings/courses/inprogress
-// @match        https://ievolveng.ultimatix.net/ievolve/coursedetails/*
+
+// @match        http*://ievolveng.ultimatix.net/ievolve/mandatorytrainings
+// @match        http*://ievolveng.ultimatix.net/ievolve/myLearnings/courses/inprogress
+// @match        http*://ievolveng.ultimatix.net/ievolve/coursedetails/*
+
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=ultimatix.net
 // @grant        none
 
@@ -43,6 +45,12 @@
                         if (document.querySelector('div.ng-star-inserted [id^=statusText'+ compl +']').innerText == 'Completed' && document.querySelector('div.ng-star-inserted [id^=crsLaunch'+ compl +']').disabled == false) {
                             document.querySelector('div.ng-star-inserted [id^=crsLaunch'+ compl +']').disabled = true;
                             document.querySelector('div.ng-star-inserted [id^=crsLaunch'+ compl +']').style.cursor = 'not-allowed';
+                        }
+                    }
+                    for (var commpl=0; commpl < document.querySelectorAll('div.ng-star-inserted p[id^=compStatusTxt]').length; commpl++) {
+                        if (document.querySelector('div.ng-star-inserted [id^=compStatusTxt'+ commpl +']').innerText == 'Completed' && document.querySelector('div.ng-star-inserted [id^=launchBtn'+ commpl +']').disabled == false) {
+                            document.querySelector('div.ng-star-inserted [id^=launchBtn'+ commpl +']').disabled = true;
+                            document.querySelector('div.ng-star-inserted [id^=launchBtn'+ commpl +']').style.cursor = 'not-allowed';
                         }
                     }
 
