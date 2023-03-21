@@ -2,7 +2,7 @@
 // @name         Anti Adblock Detector
 // @namespace    http://sandroalvares.com.br
 // @version      0.1
-// @description  Disables anti-adblockers
+// @description  So you can continue browsing ad-free
 // @author       KingRider
 // @match        http*://*/*
 // @exclude      https://docs.google.com/*
