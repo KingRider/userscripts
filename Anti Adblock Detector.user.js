@@ -22,7 +22,7 @@
     //
     // TamperMonkey Extension:
     // https://www.google.com/search?q=tampermonkey
-    
+
     setInterval(function() {
 
         for (var adb = 0; adb < document.querySelectorAll('div h3').length; adb++) {
