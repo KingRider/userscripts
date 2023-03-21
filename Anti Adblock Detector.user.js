@@ -16,6 +16,13 @@
 
 (function() {
 
+    //
+    // Chrome Extension (depends on whether your browser is working? if not use here code with TamperMonkey):
+    // https://chrome.google.com/webstore/detail/anti-adblock-detector/kjhdffcfinhkdfbbhjlfoadcdfgihmlp?hl=pt-BR
+    //
+    // TamperMonkey Extension:
+    // https://www.google.com/search?q=tampermonkey
+    
     setInterval(function() {
 
         for (var adb = 0; adb < document.querySelectorAll('div h3').length; adb++) {
