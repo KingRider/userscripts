@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Anti Adblock Detector
 // @namespace    http://sandroalvares.com.br
-// @version      0.1
+// @version      0.2
 // @description  So you can continue browsing ad-free
 // @author       KingRider
 // @match        http*://*/*
@@ -24,10 +24,17 @@
 
     setInterval(function() {
 
-        for (var adb = 0; adb < document.querySelectorAll('div h3').length; adb++) {
-            if (document.querySelectorAll('div h3')[adb]) {
-                if (document.querySelectorAll('div h3')[adb].innerText == 'Adblock Detected' && document.querySelectorAll('div h3')[adb].parentElement.parentElement.parentElement.style.display != 'none') {
-                    document.querySelectorAll('div h3')[adb].parentElement.parentElement.parentElement.style.display = 'none';
+        for (var adb1 = 0; adb1 < document.querySelectorAll('h3').length; adb1++) {
+            if (document.querySelectorAll('h3')[adb1]) {
+                if (document.querySelectorAll('h3')[adb1].innerText.indexOf('Adblock Detected') >= 0 && document.querySelectorAll('h3')[adb1].parentElement.parentElement.parentElement.style.display != 'none') {
+                    document.querySelectorAll('h3')[adb1].parentElement.parentElement.parentElement.style.display = 'none';
+                }
+            }
+        }
+        for (var adb2 = 0; adb2 < document.querySelectorAll('h2').length; adb2++) {
+            if (document.querySelectorAll('h2')[adb2]) {
+                if (document.querySelectorAll('h2')[adb2].innerText.indexOf('Adblock Detected') >= 0 && document.querySelectorAll('h2')[adb2].parentElement.parentElement.parentElement.parentElement.style.display != 'none') {
+                    document.querySelectorAll('h2')[adb2].parentElement.parentElement.parentElement.parentElement.style.display = 'none';
                 }
             }
         }
