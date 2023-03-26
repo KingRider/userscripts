@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Anti Adblock Detector
 // @namespace    http://sandroalvares.com.br
-// @version      0.2
+// @version      0.3
 // @description  So you can continue browsing ad-free
 // @author       KingRider
 // @match        http*://*/*
@@ -38,6 +38,17 @@
                 }
             }
         }
+
+        (function() {
+            var style=document.createElement('style');
+            style.innerHTML='*{user-select: auto !important;} ::selection{background-color: blue !important; color: white !important}';
+            document.body.appendChild(style);
+            document.body.style.cssText = 'overflow:initial!important;';
+            document.body.onselectstart=function(){return true};
+            document.body.oncontextmenu=function(){return true};
+            document.body.onmousedown=function(){return true};
+            document.onkeydown=function(){return true};
+        })();
 
     }, 800);
 
