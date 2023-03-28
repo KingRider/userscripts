@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         Anti Adblock Detector
 // @namespace    http://sandroalvares.com.br
-// @version      0.3
+// @version      0.35
 // @description  So you can continue browsing ad-free
 // @author       KingRider
 // @match        http*://*/*
 // @exclude      http*://*.google.com/*
+// @exclude      http*://*.playplus.com/live/*
 // @grant        none
 
 // @updateURL     https://github.com/KingRider/userscripts/raw/master/Anti%20Adblock%20Detector.user.js
