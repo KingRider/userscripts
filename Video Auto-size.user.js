@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Video Auto-size
 // @namespace    http://www.sandroalvares.com.br
-// @version      1.15
+// @version      1.183
 // @description  Auto-size @2021 + 2022 + 2023
 // @author       Sandro Alvares
 // @match        http*://*.band.uol.com.br/ao-vivo*
@@ -9,6 +9,7 @@
 // @match        http*://multicanais.tv/*
 // @match        http*://multicanais.vip/*
 // @match        http*://multicanais.video/*
+// @match        http*://multicanais.vc/*
 // @match        http*://multicanais.top/assistir-*
 // @match        http*://futeboltotal.net.br/assistir*
 // @match        http*://futeboltotal.org/assistir*
@@ -17,6 +18,7 @@
 // @match        http*://redecanaistv.net/*
 // @match        http*://www.sbtvideos.com.br/aovivo*
 // @match        http*://tv0800.xyz/canais/assistir-*
+// @match        http*://tv0800.com/canais/assistir-*
 // @match        http*://tvfree.xyz/canais/assistir-*
 // @match        http*://megacanais.com/*-ao-vivo*/*
 // @match        http*://*.nowonline.com.br/player/*/no-ar*
@@ -33,6 +35,7 @@
 (function() {
     var conta = 0;
     var tempo = setInterval(function() {
+
         // MegaCanais.com
         if (window.location.href.indexOf('megacanais.com') > 0) {
             if (document.querySelectorAll('div.box\-container div.sections\-container div.row\-container').length > 0) {
@@ -84,7 +87,8 @@
                 setInterval(function(){
                     if (document.querySelectorAll('div[title="Toggle Play"] i.fa.fa-play').length > 0) {
                         document.querySelectorAll('div[title="Toggle Play"] i.fa.fa-play')[0].click();
-                        dataLayerPlayPauseClick();
+                        //dataLayerPlayPauseClick();
+                        //document.querySelector("#full__screenContainer > div.player__controls > div.player__button.toggle > i").click()
                     }
                     window.scrollBy(-1000,-1000);
                 }, 3000);
@@ -114,7 +118,7 @@
         }
         // TV 0800
         // tvfree
-        if (window.location.href.indexOf('tv0800.xyz') > 0 || window.location.href.indexOf('tvfree.xyz') > 0) {
+        if (window.location.href.indexOf('tv0800.com') > 0 || window.location.href.indexOf('tvfree.xyz') > 0) {
             if (document.querySelectorAll('div.content.right').length > 0) {
                 if (document.querySelectorAll('div.div-btns').length > 0) {
                     if (document.querySelectorAll('div.div-btns')[0].style.display !== 'none') {
@@ -134,9 +138,11 @@
                 }
                 document.querySelectorAll('div#contenedor')[0].style.margin = '0 auto 0';
                 // Adblock Detected?
+                /*
                 if (document.querySelectorAll('div.is-detected')[0].style.display !== 'none') {
                     document.querySelectorAll('div.is-detected')[0].style.display = 'none';
                 }
+                */
                 // Texto Lateral Direita
                 if (document.querySelectorAll('div.sidebar.right.scrolling')[0].style.display !== 'none') {
                     document.querySelectorAll('div.sidebar.right.scrolling')[0].style.display = 'none';
@@ -146,6 +152,7 @@
         }
         // Band Ao-vivo
         if (window.location.href.indexOf('band.uol') > 0) {
+            /*
             if (document.querySelectorAll('nav.channel').length > 0) {
                 document.querySelectorAll('nav.channel')[0].style.display = 'none';
             }
@@ -163,6 +170,14 @@
             document.querySelectorAll('div#barrauol')[0].style.display = 'none'
             document.body.style.background = '#262626';
             clearInterval(tempo);
+display: block;
+position: fixed;
+top: 50px;
+left: 50px;
+z-index: 9999;
+width: 1250px;
+height: 704px
+*/
         }
         // SBT
         if (window.location.href.indexOf('sbt.com.br') > 0) {
@@ -308,13 +323,19 @@
                 }
             }
         }
-        /*
-        if (conta >= 10) {
+
+        if (conta >= 30) {
             clearInterval(tempo);
+            console.log('Terminado!');
         }
         conta++;
-        */
+
     }, 1500);
+
+    // Disable Devtool / Console
+    // https://theajack.github.io/disable-devtool/
+    // https://cdn.jsdelivr.net/npm/console-ban@4.1.0/dist/console-ban.min.js
+
     // Brave Ads
     /*
     var texto = "";
