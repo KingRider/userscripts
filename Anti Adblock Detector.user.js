@@ -6,7 +6,7 @@
 // @author       KingRider
 // @match        http*://*/*
 // @exclude      http*://*.google.com/*
-// @exclude      http*://*.github.com/*
+// @exclude      http*://github.com/*
 // @exclude      http*://*.youtube.com/*
 // @exclude      http*://*.playplus.com/*
 // @grant        none
