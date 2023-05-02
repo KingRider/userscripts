@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         iEvolve - Remove Expired
 // @namespace    http://www.sandroalvares.com.br
-// @version      v0.09821
+// @version      v0.0995
 // @description  TCS Mandatory Course iEvolve with remove expired (including exam answers does not expire)
 // @author       KingRider
 
@@ -9,6 +9,7 @@
 // @match        https://ievolveng.ultimatix.net/ievolve/html/sessionExpired.html
 // @match        https://ievolveng.ultimatix.net/ievolve/pageNotFound
 // @match        https://ievolveng.ultimatix.net/ievolve/coursedetails/*
+// @match        https://ievolveng.ultimatix.net/ievolve/competencydetails/*
 // @match        https://ievolveng.ultimatix.net/ievolve/mandatorytrainings
 // @match        https://ievolveng.ultimatix.net/ievolve/myLearnings/courses/inprogress
 // @match        https://ievolveng.ultimatix.net/error/*
@@ -17,8 +18,8 @@
 
 // @grant        none
 
-// @updateURL     https://github.com/KingRider/userscripts/raw/master/iEvolve%20-%20Remove%20Expired.user.js
-// @downloadURL   https://github.com/KingRider/userscripts/raw/master/iEvolve%20-%20Remove%20Expired.user.js
+// @updateURL    https://github.com/KingRider/userscripts/raw/master/iEvolve%20-%20Remove%20Expired.user.js
+// @downloadURL  https://github.com/KingRider/userscripts/raw/master/iEvolve%20-%20Remove%20Expired.user.js
 
 // ==/UserScript==
 
@@ -31,14 +32,14 @@
         if (document.title == 'iEvolve Learner Maintenance') {
             setTimeout(function() {
                 document.location.href = 'https://ievolveng.ultimatix.net/ievolve/myLearnings/courses/inprogress';
-            }, 60000); // 5 minutos
+            }, 32000);
         }
-        if (document.location.pathname.indexOf('/error/ievolveng_root_downtime') > 5) {
+        if (document.location.pathname.indexOf('/error/ievolveng_root_downtime') > 0) {
             setTimeout(function() {
                 document.location.href = 'https://ievolveng.ultimatix.net/ievolve/myLearnings/courses/inprogress';
-            }, 60000); // 5 minutos
+            }, 34000);
         }
-        if (document.location.pathname.indexOf('/sessionExpired') > 5 || document.location.pathname.indexOf('/pageNotFound') > 5) {
+        if (document.location.pathname.indexOf('/sessionExpired') > 0 || document.location.pathname.indexOf('/pageNotFound') > 0) {
             document.location.href = 'https://ievolveng.ultimatix.net/ievolve/mandatorytrainings';
             //document.location.href = '../myLearnings/courses/inprogress';
             // https://ievolveng.ultimatix.net/ievolve/myLearnings/courses/inprogress
@@ -51,16 +52,16 @@
             }
         }
         */
-        if (document.location.pathname.indexOf('/error/ievolveng_root') > 5 || document.location.pathname.indexOf('/error/errorPages/') > 5 || document.location.pathname.indexOf('/error/ievolve_root_downtime') > 5) {
+        if (document.location.pathname.indexOf('/error/ievolveng_root') > 0 || document.location.pathname.indexOf('/error/errorPages/') > 0 || document.location.pathname.indexOf('/error/ievolve_root_downtime') > 0) {
             setTimeout(function() {
                 document.location.href = 'https://ievolveng.ultimatix.net/ievolve/';
-            }, 60000); // Exemplo: 3000 milisegundos em 3 segundos
+            }, 36000); // Exemplo: 3000 milisegundos em 3 segundos
         }
         if (document.location.pathname.indexOf('/coursedetails/') > 5) {
             setTimeout(function() {
                 document.location.reload();
                 console.log('nova pagina atualizada');
-            }, 40000); // Exemplo: 3000 milisegundos em 3 segundos
+            }, 20000); // Exemplo: 3000 milisegundos em 3 segundos
         }
 
         // Alerta Advertencia (mouseout) - Ausente (algo erro Enroute)
@@ -103,10 +104,30 @@
 // div#pdfSuccessModal.modal fade show
 // div.modal.fade.show#L1FeedBack
 
-        // Mostrar o status correto - Prova Agile
+        // -----------------------------------------------------------------------------------------------------------------
+        // --- Mostrar o status correto
+        // -----------------------------------------------------------------------------------------------------------------
+
+        // <!--<div class="correct_count"> <span id="correctcount"></span> </div>-->
+        if (document.querySelector('div.qust_count')) {
+            if ((document.querySelectorAll('div.correct_count').length > 0) == false) {
+                const el = document.createElement('div');
+                el.setAttribute('class','correct_count');
+                const el2 = document.createElement('span');
+                el2.setAttribute('id','correctcount');
+                document.querySelector('div.qust_count').parentNode.append(el);
+                document.querySelector('div.correct_count').append(el2);
+            }
+        }
+
+        // Prova Agile
         if (document.querySelectorAll('div.numOfCrrctCol').length > 0) {
-            if (document.querySelectorAll('div.numOfCrrctCol')[0].ariaValueText !== '') {
-                document.querySelectorAll('div.numOfCrrctCol')[0].innerText = document.querySelectorAll('div.numOfCrrctCol')[0].ariaValueText;
+            if (document.querySelectorAll('div.numOfCrrctCol')[0].innerText.length == 0) {
+                if (document.querySelectorAll('div.numOfCrrctCol')[0].ariaValueText !== '') {
+                    document.querySelectorAll('div.numOfCrrctCol')[0].innerText = '';
+                    document.querySelectorAll('div.numOfCrrctCol')[0].innerText = document.querySelectorAll('div.numOfCrrctCol')[0].ariaValueText;
+//<span class="correctCountArea"><span class="correctGiven">0</span>/<span class="totalQuestions">20</span> Correct</span>
+                }
             }
         }
 
@@ -117,6 +138,85 @@
         for (var sa_course=0; sa_course < document.querySelectorAll('div[class^=radio] div[aria-hidden="false"]').length; sa_course++) {
             if (document.querySelectorAll('div[aria-hidden="false"]')[sa_course].style.userSelect !== 'inherit') {
                 document.querySelectorAll('div[class^=radio] div[aria-hidden="false"]')[sa_course].style.userSelect = 'inherit';
+            }
+        }
+
+        // -----------------------------------------------------------------------------------------------------------------
+        // --- Auto-resposta STEP 2 - Competencia
+        // -----------------------------------------------------------------------------------------------------------------
+/*
+        for (var compt = 0; document.querySelectorAll('form[novalidate] textarea').length > compt; compt++) {
+            if (document.querySelectorAll('form[novalidate] textarea')[compt]) {
+                if (document.querySelectorAll('form[novalidate] textarea')[compt].value == '') {
+                    document.querySelectorAll('form[novalidate] textarea')[compt].value = 'NOT APPLICABLE';
+                }
+            }
+        }
+*/
+        // comp 1846
+        if (document.location.pathname.indexOf('ievolve/competencydetails/1846') > 0) {
+            if (document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted')) {
+                if (document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted').innerText.length <= 18 && document.querySelector('div.sandro') == undefined) {
+                    var myBodyIdx = document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted');
+                    var newBaitTagx = document.createElement('div');
+                    newBaitTagx.classList.add('sandro');
+                    var newBaitTextx = document.createTextNode('Obrigatorio (F2): ');
+                    newBaitTagx.appendChild(newBaitTextx);
+                    myBodyIdx.appendChild(newBaitTagx);
+
+                    var myBodyId = document.querySelector('div.sandro');
+                    var newBaitTag = document.createElement('a');
+                    newBaitTag.classList.add('sandro');
+                    var newBaitText = document.createTextNode(' Ler (15802) ');
+                    newBaitTag.setAttribute('href', 'https://ievolveng.ultimatix.net/ievolve/coursedetails/15802');
+                    newBaitTag.style.textDecoration = 'auto';
+                    newBaitTag.appendChild(newBaitText);
+                    myBodyId.appendChild(newBaitTag);
+
+                    var myBodyId2 = document.querySelector('div.sandro');
+                    var newBaitTag2 = document.createElement('a');
+                    newBaitTag2.classList.add('sandro');
+                    var newBaitText2 = document.createTextNode(' Prova (59639) ');
+                    newBaitTag2.setAttribute('href', 'https://ievolveng.ultimatix.net/ievolve/coursedetails/59639');
+                    newBaitTag2.style.textDecoration = 'auto';
+                    newBaitTag2.appendChild(newBaitText2);
+                    myBodyId2.appendChild(newBaitTag2);
+                }
+            }
+        }
+
+        // comp 6434
+        if (document.location.pathname.indexOf('ievolve/competencydetails/6434') > 0) {
+            if (document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted')) {
+                if (document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted').innerText.length <= 18 && document.querySelector('div.sandro') == undefined) {
+                    var myBodyIdxb = document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted');
+                    var newBaitTagxb = document.createElement('div');
+                    newBaitTagxb.classList.add('sandro');
+                    var newBaitTextxb = document.createTextNode('Obrigatorio (F2): ');
+                    newBaitTagxb.appendChild(newBaitTextxb);
+                    myBodyIdxb.appendChild(newBaitTagxb);
+
+                    var myBodyIdb = document.querySelector('div.sandro');
+                    var newBaitTagb = document.createElement('a');
+                    newBaitTagb.classList.add('sandro');
+                    var newBaitTextb = document.createTextNode(' Ler/Prova (69020) ');
+                    newBaitTagb.setAttribute('href', 'https://ievolveng.ultimatix.net/ievolve/coursedetails/69020');
+                    newBaitTagb.style.textDecoration = 'auto';
+                    newBaitTagb.appendChild(newBaitTextb);
+                    myBodyIdb.appendChild(newBaitTagb);
+                }
+            }
+        }
+
+        document.onkeydown = function(evt) {
+            document.onkeyup = function(event) {
+                if (event.key == "F2" || event.keyCode == 113) { // https://keycode.info/
+                    if (document.querySelector('div.sandro').style.display !== 'none') {
+                        document.querySelector('div.sandro').style.display = 'none';
+                    } else {
+                        document.querySelector('div.sandro').style.display = '';
+                    }
+                }
             }
         }
 
@@ -310,7 +410,7 @@
                 document.querySelectorAll('button#submitbutton[class="submit submitEnable"]')[0].style.cursor = 'pointer';
             }
         }
-
+/*
         //const curso = ['43893','7408','65584','67334','48150','73118','48518','64091','57278','67539','21939','56031','56978','72142','22360','46816']; // curso.includes('48518')
         var sa_curso = new Array('43893','7408','65584','67334','48150','73118','48518','64091','57278','67539','21939','56031','56978','72142','22360','46816');
         for (var sa_parte = 0; sa_parte < sa_curso.length; sa_parte++) {
@@ -325,7 +425,7 @@
                 }
             }
         }
-
+*/
         // Curso conluido não clicar botão
         for (var compl=0; compl < document.querySelectorAll('div.ng-star-inserted p[id^=statusText]').length; compl++) {
             if (document.querySelector('div.ng-star-inserted [id^=statusText'+ compl +']').innerText == 'Completed' && document.querySelector('div.ng-star-inserted [id^=crsLaunch'+ compl +']').disabled == false) {
