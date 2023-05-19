@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Anti Adblock Detector
 // @namespace    http://sandroalvares.com.br
-// @version      0.455
+// @version      0.461
 // @description  So you can continue browsing ad-free
 // @author       KingRider
 // @match        http*://*/*
@@ -117,22 +117,25 @@
         //botao X
         for (var ads = 0; document.querySelectorAll('[id*="ads-"]').length > ads; ads++) {
             if (document.querySelectorAll('[id*="ads-"]')[ads] !== '') {
-                document.querySelectorAll('[id*="ads-"]')[ads].parentElement.remove();
+                //document.querySelectorAll('[id*="ads-"]')[ads].parentElement.remove();
+                document.querySelectorAll('[id*="ads-"]')[ads].remove();
             }
         }
-        //document.querySelector('style#mdpDeblocker-css').remove();
         /*
-        for (var mdp = 0; document.querySelectorAll('[id*="mdpDeblocker-"]').length > mdp; mdp++) {
-            if (document.querySelectorAll('[id*="mdpDeblocker-css"]')[mdp] !== '') {
-                document.querySelectorAll('[id*="mdpDeblocker-css"]')[mdp].remove();
-            }
-        }
-        for (var mdp2 = 0; document.querySelectorAll('[class*="mdpDeblocker-css"]').length > mdp2; mdp2++) {
-            if (document.querySelectorAll('[class*="mdpDeblocker-css"]')[mdp2] !== '') {
-                document.querySelectorAll('[class*="mdpDeblocker-css"]')[mdp2].remove();
-            }
+        if (document.querySelector('style#mdpDeblocker-css')) {
+            document.querySelector('style#mdpDeblocker-css').remove();
         }
         */
+        for (var mdp = 0; document.querySelectorAll('style[id*="mdpDeblocker"]').length > mdp; mdp++) {
+            if (document.querySelectorAll('style[id*="mdpDeblocker"]')[mdp] !== '') {
+                document.querySelectorAll('style[id*="mdpDeblocker"]')[mdp].remove();
+            }
+        }
+        for (var mdp2 = 0; document.querySelectorAll('style[class*="mdpDeblocker"]').length > mdp2; mdp2++) {
+            if (document.querySelectorAll('style[class*="mdpDeblocker"]')[mdp2] !== '') {
+                document.querySelectorAll('style[class*="mdpDeblocker"]')[mdp2].remove();
+            }
+        }
 
         function quebrascroll() {
             var style=document.createElement('style');
