@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Anti Adblock Detector
 // @namespace    http://sandroalvares.com.br
-// @version      0.461
+// @version      0.462
 // @description  So you can continue browsing ad-free
 // @author       KingRider
 // @match        http*://*/*
@@ -38,6 +38,7 @@
             if (document.querySelectorAll('h3')[adb1]) {
                 if (document.querySelectorAll('h3')[adb1].innerText.indexOf('Adblock Detected') > 0 && document.querySelectorAll('h3')[adb1].parentElement.parentElement.parentElement.style.display != 'none') {
                     document.querySelectorAll('h3')[adb1].parentElement.parentElement.parentElement.style.display = 'none';
+                    console.log('adb1');
                     quebrascroll();
                 }
             }
@@ -48,6 +49,7 @@
             if (document.querySelectorAll('h2')[adb2]) {
                 if (document.querySelectorAll('h2')[adb2].innerText.indexOf('Adblock Detected') > 0 && document.querySelectorAll('h2')[adb2].parentElement.parentElement.parentElement.parentElement.style.display != 'none') {
                     document.querySelectorAll('h2')[adb2].parentElement.parentElement.style.display = 'none';
+                    console.log('adb2');
                     quebrascroll();
                 }
             }
@@ -60,6 +62,7 @@
                 if (document.querySelectorAll('span')[adb3].innerText.indexOf('ncios detectado') >= 0 && document.querySelectorAll('span')[adb3].parentElement.parentElement.parentElement.parentElement.style.display != 'none') {
                     document.querySelectorAll('span')[adb3].parentElement.parentElement.parentElement.parentElement.parentElement.style.display = 'none';
                     //var temp = document.querySelectorAll('span')[adb3]; temp.parentElement.parentElement.parentElement.parentElement.parentElement.removeChild(temp);
+                    console.log('dailymotion');
                 }
             }
         }
@@ -69,6 +72,7 @@
             if (document.querySelectorAll('div')[adb4]) {
                 if (document.querySelectorAll('div')[adb4].innerText.indexOf('Adblock') > 0) {
                     document.querySelectorAll('div')[adb4].style.display = 'none';
+                    console.log('adb4');
                     quebrascroll();
                 }
             }
@@ -82,57 +86,71 @@
         document.body.style.webkitFilter = '';
         for (var sscript = 0; document.querySelectorAll('script').length > sscript; sscript++) {
             if (document.querySelectorAll('script')[sscript].innerText.indexOf('Anti-adblock') > 0) {
+                console.log('sscript1');
                 document.querySelectorAll('script')[sscript].remove();
             }
             if (document.querySelectorAll('script')[sscript].innerText.indexOf('|Adblock') > 0) {
+                console.log('sscript2');
                 document.querySelectorAll('script')[sscript].remove();
             }
         }
         for (var sstyle = 0; document.querySelectorAll('style').length > sstyle; sstyle++) {
             if (document.querySelectorAll('style')[sstyle].innerText.indexOf('Anti-adblock') > 0) {
+                console.log('sstyle1', sstyle);
                 document.querySelectorAll('style')[sstyle].remove();
             }
             if (document.querySelectorAll('style')[sstyle].innerText.indexOf('blur') > 0) {
-                document.querySelectorAll('style')[sstyle].remove();
+                console.log('sstyle2', sstyle);
+                document.querySelectorAll('style')[sstyle].innerText = document.querySelectorAll('style')[sstyle].innerText.replaceAll('blur', 'xlur');
+                //document.querySelectorAll('style')[sstyle].remove();
             }
         }
         for (var blur = 0; document.querySelectorAll('div').length > blur; blur++) {
             if (document.querySelectorAll('div')[blur].style.filter !== '') {
                 document.querySelectorAll('div')[blur].style.filter = '';
                 document.querySelectorAll('div')[blur].style.webkitFilter = '';
+                console.log('blur');
             }
         }
         for (var blur2 = 0; document.querySelectorAll('span').length > blur2; blur2++) {
             if (document.querySelectorAll('span')[blur2].style.filter !== '') {
                 document.querySelectorAll('span')[blur2].style.filter = '';
                 document.querySelectorAll('span')[blur2].style.webkitFilter = '';
+                console.log('blur2');
             }
         }
         for (var blur3 = 0; document.querySelectorAll('p').length > blur3; blur3++) {
             if (document.querySelectorAll('p')[blur3].style.filter !== '') {
                 document.querySelectorAll('p')[blur3].style.filter = '';
                 document.querySelectorAll('p')[blur3].style.webkitFilter = '';
+                console.log('blur3');
             }
         }
         //botao X
+        /*
         for (var ads = 0; document.querySelectorAll('[id*="ads-"]').length > ads; ads++) {
             if (document.querySelectorAll('[id*="ads-"]')[ads] !== '') {
                 //document.querySelectorAll('[id*="ads-"]')[ads].parentElement.remove();
+                console.log('ads');
                 document.querySelectorAll('[id*="ads-"]')[ads].remove();
             }
         }
+        */
         /*
         if (document.querySelector('style#mdpDeblocker-css')) {
+            console.log('style#mdp');
             document.querySelector('style#mdpDeblocker-css').remove();
         }
         */
         for (var mdp = 0; document.querySelectorAll('style[id*="mdpDeblocker"]').length > mdp; mdp++) {
             if (document.querySelectorAll('style[id*="mdpDeblocker"]')[mdp] !== '') {
+                console.log('mdp');
                 document.querySelectorAll('style[id*="mdpDeblocker"]')[mdp].remove();
             }
         }
         for (var mdp2 = 0; document.querySelectorAll('style[class*="mdpDeblocker"]').length > mdp2; mdp2++) {
             if (document.querySelectorAll('style[class*="mdpDeblocker"]')[mdp2] !== '') {
+                console.log('mdp2');
                 document.querySelectorAll('style[class*="mdpDeblocker"]')[mdp2].remove();
             }
         }
