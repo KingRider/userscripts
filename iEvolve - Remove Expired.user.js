@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         iEvolve - Remove Expired
 // @namespace    http://www.sandroalvares.com.br
-// @version      v0.0995
+// @version      v0.0998
 // @description  TCS Mandatory Course iEvolve with remove expired (including exam answers does not expire)
 // @author       KingRider
 
@@ -34,12 +34,12 @@
                 document.location.href = 'https://ievolveng.ultimatix.net/ievolve/myLearnings/courses/inprogress';
             }, 32000);
         }
-        if (document.location.pathname.indexOf('/error/ievolveng_root_downtime') > 0) {
+        if (document.location.pathname.indexOf('/error/ievolveng_root_downtime') >= 0) {
             setTimeout(function() {
                 document.location.href = 'https://ievolveng.ultimatix.net/ievolve/myLearnings/courses/inprogress';
             }, 34000);
         }
-        if (document.location.pathname.indexOf('/sessionExpired') > 0 || document.location.pathname.indexOf('/pageNotFound') > 0) {
+        if (document.location.pathname.indexOf('/sessionExpired') >= 0 || document.location.pathname.indexOf('/pageNotFound') >= 0) {
             document.location.href = 'https://ievolveng.ultimatix.net/ievolve/mandatorytrainings';
             //document.location.href = '../myLearnings/courses/inprogress';
             // https://ievolveng.ultimatix.net/ievolve/myLearnings/courses/inprogress
@@ -52,12 +52,12 @@
             }
         }
         */
-        if (document.location.pathname.indexOf('/error/ievolveng_root') > 0 || document.location.pathname.indexOf('/error/errorPages/') > 0 || document.location.pathname.indexOf('/error/ievolve_root_downtime') > 0) {
+        if (document.location.pathname.indexOf('/error/ievolveng_root') >= 0 || document.location.pathname.indexOf('/error/errorPages/') >= 0 || document.location.pathname.indexOf('/error/ievolve_root_downtime') >= 0) {
             setTimeout(function() {
                 document.location.href = 'https://ievolveng.ultimatix.net/ievolve/';
             }, 36000); // Exemplo: 3000 milisegundos em 3 segundos
         }
-        if (document.location.pathname.indexOf('/coursedetails/') > 5) {
+        if (document.location.pathname.indexOf('/coursedetails/') >= 5) {
             setTimeout(function() {
                 document.location.reload();
                 console.log('nova pagina atualizada');
@@ -120,14 +120,11 @@
             }
         }
 
-        // Prova Agile
+        // Prova Agile - exibir correto
         if (document.querySelectorAll('div.numOfCrrctCol').length > 0) {
-            if (document.querySelectorAll('div.numOfCrrctCol')[0].innerText.length == 0) {
-                if (document.querySelectorAll('div.numOfCrrctCol')[0].ariaValueText !== '') {
-                    document.querySelectorAll('div.numOfCrrctCol')[0].innerText = '';
-                    document.querySelectorAll('div.numOfCrrctCol')[0].innerText = document.querySelectorAll('div.numOfCrrctCol')[0].ariaValueText;
+            if (document.querySelectorAll('div.numOfCrrctCol')[0].innerText != document.querySelectorAll('div.numOfCrrctCol')[0].ariaValueText) {
+                document.querySelectorAll('div.numOfCrrctCol')[0].innerText = document.querySelectorAll('div.numOfCrrctCol')[0].ariaValueText;
 //<span class="correctCountArea"><span class="correctGiven">0</span>/<span class="totalQuestions">20</span> Correct</span>
-                }
             }
         }
 
@@ -154,7 +151,7 @@
         }
 */
         // comp 1846
-        if (document.location.pathname.indexOf('ievolve/competencydetails/1846') > 0) {
+        if (document.location.pathname.indexOf('ievolve/competencydetails/1846') >= 0) {
             if (document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted')) {
                 if (document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted').innerText.length <= 18 && document.querySelector('div.sandro') == undefined) {
                     var myBodyIdx = document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted');
@@ -184,9 +181,9 @@
                 }
             }
         }
-
+/*
         // comp 6434
-        if (document.location.pathname.indexOf('ievolve/competencydetails/6434') > 0) {
+        if (document.location.pathname.indexOf('ievolve/competencydetails/6434') >= 0) {
             if (document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted')) {
                 if (document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted').innerText.length <= 18 && document.querySelector('div.sandro') == undefined) {
                     var myBodyIdxb = document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted');
@@ -207,7 +204,7 @@
                 }
             }
         }
-
+*/
         document.onkeydown = function(evt) {
             document.onkeyup = function(event) {
                 if (event.key == "F2" || event.keyCode == 113) { // https://keycode.info/
@@ -392,6 +389,11 @@
             if (document.querySelector('div#Qfeedback').style.display !== 'none') {
                 document.querySelector('div#Qfeedback').style.display = 'none';
             }
+        }
+
+        // Feedback Exame normal - automatico fechar pop
+        if (document.querySelectorAll('button.enableEnterKey')[0]) {
+            document.querySelectorAll('button[alt="Close Feedback"]')[0].click();
         }
 
         // Expiração tempo a prova
