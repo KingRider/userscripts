@@ -1,12 +1,11 @@
 // ==UserScript==
 // @name         Mostrar a senha F8
 // @namespace    http://sandroalvares.com.br
-// @version      2.0
+// @version      2.4
 // @description  Mostrar a senha para alerta
 // @author       KingRider
 // @match        http*://*/*
-// @exclude      https://docs.google.com/*
-// @exclude      https://translate.google.com/*
+// @exclude      http*://*.google.com/*
 // @grant        none
 
 // @updateURL     https://github.com/KingRider/userscripts/raw/master/Mostrar%20a%20senha%20F8.user.js
@@ -22,11 +21,14 @@
                 if (event.key == "F2" || event.keyCode == 119){ // https://keycode.info/
                     if (document.querySelectorAll('input[type=password]').length > 0) {
                         var x = 0, conta = 1; var texto = "";
-                        for (x=0; x<document.querySelectorAll('input[type=password]').length; x++) {
+                        for (x=0; x < document.querySelectorAll('input[type=password]').length; x++) {
+                            document.querySelectorAll('input[type=password]')[x].type = 'senha';
+                            /*
                             if (document.querySelectorAll('input[type=password]')[x].value != "") {
                                 texto += (conta)+"º) "+document.querySelectorAll('input[type=password]')[x].value+"\r\n";
                                 conta++;
                             }
+                            */
                         }
                         /*
                         var ativado = setInterval(function() {
