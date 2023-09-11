@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Mostrar a senha F8
 // @namespace    http://sandroalvares.com.br
-// @version      2.4
+// @version      2.41
 // @description  Mostrar a senha para alerta
 // @author       KingRider
 // @match        http*://*/*
@@ -42,7 +42,7 @@
                             }
                         }, 1500);
                         */
-                        alert(texto);
+                        //alert(texto);
                         clearInterval(tempof8);
                         /*
                     if (document.querySelectorAll('input[type=password]').length==1) {
