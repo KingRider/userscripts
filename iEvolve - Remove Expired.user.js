@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         iEvolve - Remove Expired
 // @namespace    http://www.sandroalvares.com.br
-// @version      v0.0998
+// @version      v1.1231
 // @description  TCS Mandatory Course iEvolve with remove expired (including exam answers does not expire)
 // @author       KingRider
 
@@ -15,6 +15,7 @@
 // @match        https://ievolveng.ultimatix.net/error/*
 // @match        https://ievolve.ultimatix.net/error/*
 // @match        https://auth.ultimatix.net/error/errorPages/SAG*
+// @match        https://mindworks.ultimatix.net/PlayQuiz_New/Quiz.aspx*
 
 // @grant        none
 
@@ -56,6 +57,9 @@
             setTimeout(function() {
                 document.location.href = 'https://ievolveng.ultimatix.net/ievolve/';
             }, 36000); // Exemplo: 3000 milisegundos em 3 segundos
+        }
+        if (document.querySelectorAll('app-competency-details')[0].innerText == 'Competency not available') {
+            document.location.href = 'https://ievolveng.ultimatix.net/ievolve/';
         }
         if (document.location.pathname.indexOf('/coursedetails/') >= 5) {
             setTimeout(function() {
@@ -120,11 +124,14 @@
             }
         }
 
-        // Prova Agile - exibir correto
+        // Prova Agile
         if (document.querySelectorAll('div.numOfCrrctCol').length > 0) {
-            if (document.querySelectorAll('div.numOfCrrctCol')[0].innerText != document.querySelectorAll('div.numOfCrrctCol')[0].ariaValueText) {
-                document.querySelectorAll('div.numOfCrrctCol')[0].innerText = document.querySelectorAll('div.numOfCrrctCol')[0].ariaValueText;
+            if (document.querySelectorAll('div.numOfCrrctCol')[0].innerText.length > 0) {
+                if (document.querySelectorAll('div.numOfCrrctCol')[0].ariaValueText !== '') {
+                    document.querySelectorAll('div.numOfCrrctCol')[0].innerText = '';
+                    document.querySelectorAll('div.numOfCrrctCol')[0].innerText = document.querySelectorAll('div.numOfCrrctCol')[0].ariaValueText;
 //<span class="correctCountArea"><span class="correctGiven">0</span>/<span class="totalQuestions">20</span> Correct</span>
+                }
             }
         }
 
@@ -150,7 +157,7 @@
             }
         }
 */
-        // comp 1846
+        // comp 1846 - PI
         if (document.location.pathname.indexOf('ievolve/competencydetails/1846') >= 0) {
             if (document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted')) {
                 if (document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted').innerText.length <= 18 && document.querySelector('div.sandro') == undefined) {
@@ -181,6 +188,54 @@
                 }
             }
         }
+
+        // comp 5278 - KM
+        if (document.location.pathname.indexOf('ievolve/competencydetails/5278') >= 0) {
+            if (document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted')) {
+                if (document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted').innerText.length <= 18 && document.querySelector('div.sandro') == undefined) {
+                    var myBodyIdx3 = document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted');
+                    var newBaitTagx3 = document.createElement('div');
+                    newBaitTagx3.classList.add('sandro');
+                    var newBaitTextx3 = document.createTextNode('Obrigatorio (F2): ');
+                    newBaitTagx3.appendChild(newBaitTextx3);
+                    myBodyIdx3.appendChild(newBaitTagx3);
+
+                    var myBodyId3 = document.querySelector('div.sandro');
+                    var newBaitTag3 = document.createElement('a');
+                    newBaitTag3.classList.add('sandro');
+                    var newBaitText3 = document.createTextNode(' Prova (51283) ');
+                    newBaitTag3.setAttribute('href', 'https://ievolveng.ultimatix.net/ievolve/coursedetails/51283');
+                    newBaitTag3.style.textDecoration = 'auto';
+                    newBaitTag3.appendChild(newBaitText3);
+                    myBodyId3.appendChild(newBaitTag3);
+                }
+            }
+        }
+
+        // comp 6125 - MFDM
+        if (document.location.pathname.indexOf('ievolve/competencydetails/6125') >= 0) {
+            if (document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted')) {
+                if (document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted').innerText.length <= 18 && document.querySelector('div.sandro') == undefined) {
+                    var myBodyIdx4 = document.querySelector('div app-competency-details div.font16.bold.ng-star-inserted');
+                    var newBaitTagx4 = document.createElement('div');
+                    newBaitTagx4.classList.add('sandro');
+                    var newBaitTextx4 = document.createTextNode('Obrigatorio (F2): ');
+                    newBaitTagx4.appendChild(newBaitTextx4);
+                    myBodyIdx4.appendChild(newBaitTagx4);
+
+                    var myBodyId4 = document.querySelector('div.sandro');
+                    var newBaitTag4 = document.createElement('a');
+                    newBaitTag4.classList.add('sandro');
+                    var newBaitText4 = document.createTextNode(' (Path 2 & Group 2 | Não faça prova ION) ');
+                    //newBaitTag4.setAttribute('href', 'https://play.fresco.me/course/740');
+                    newBaitTag4.style.textDecoration = 'auto';
+                    newBaitTag4.style.color = 'blue';
+                    newBaitTag4.appendChild(newBaitText4);
+                    myBodyId4.appendChild(newBaitTag4);
+                }
+            }
+        }
+
 /*
         // comp 6434
         if (document.location.pathname.indexOf('ievolve/competencydetails/6434') >= 0) {
@@ -391,11 +446,6 @@
             }
         }
 
-        // Feedback Exame normal - automatico fechar pop
-        if (document.querySelectorAll('button.enableEnterKey')[0]) {
-            document.querySelectorAll('button[alt="Close Feedback"]')[0].click();
-        }
-
         // Expiração tempo a prova
         if (document.querySelectorAll('div#TimeoutFB[class="Instruction_dialogue active"]').length > 0) {
             if (document.querySelectorAll('div#TimeoutFB[class="Instruction_dialogue active"]')[0].style.display !== 'none') {
@@ -441,6 +491,16 @@
                 document.querySelector('div.ng-star-inserted [id^=launchBtn'+ commpl +']').style.cursor = 'not-allowed';
             }
         }
+        /* Desativar curso ION é nada bom
+        _ION
+        LX_SP_Assessment
+        */
+        for (var conmpl=0; conmpl < document.querySelectorAll('a.linkOne').length; conmpl++) {
+            if (document.querySelectorAll('a.linkOne')[conmpl].innerText.toUpperCase().indexOf('_ION') > 0 && document.querySelectorAll('a.linkOne')[conmpl].parentNode.parentNode.querySelectorAll('div.ng-star-inserted button')[0].disabled == false) {
+                document.querySelectorAll('a.linkOne')[conmpl].parentNode.parentNode.querySelectorAll('div.ng-star-inserted button')[0].disabled = true;
+                document.querySelectorAll('a.linkOne')[conmpl].parentNode.parentNode.querySelectorAll('div.ng-star-inserted button')[0].style.cursor = 'not-allowed';
+            }
+        }
 
     }, 2000);
 
@@ -461,7 +521,6 @@
     };
 */
 
-/*
     (function() {
         var style=document.createElement('style');
         style.innerHTML='*{user-select: auto !important;} ::selection{background-color: blue !important; color: white !important}';
@@ -471,7 +530,17 @@
         document.body.onmousedown=function(){return true};
         document.onkeydown=function(){return true};
     })();
-*/
+
+    document.onselectstart = new Function("return true");
+    document.oncontextmenu = new Function("return true");
+    document.onmousedown = new Function("return true");
+    document.onkeydown = new Function("return true");
+    document.onclick = new Function("return true");
+    document.oncut = new Function("return true");
+    document.oncopy = new Function("return true");
+    document.onpaste = new Function("return true");
+
+    function bodyUnload() { console.log('expirado e renovado'); }
 
     // Test
     console.log(self.window.location.protocol+"//"+self.window.location.host+"/*");
