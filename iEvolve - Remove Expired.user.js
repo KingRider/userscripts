@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         iEvolve - Remove Expired
 // @namespace    http://www.sandroalvares.com.br
-// @version      v1.1231
+// @version      v1.1232
 // @description  TCS Mandatory Course iEvolve with remove expired (including exam answers does not expire)
 // @author       KingRider
 
@@ -40,6 +40,11 @@
                 document.location.href = 'https://ievolveng.ultimatix.net/ievolve/myLearnings/courses/inprogress';
             }, 34000);
         }
+        if (document.location.pathname.indexOf('https://ievolveng.ultimatix.net/ievolve/myLearnings/courses/inprogress') >= 0) {
+            setTimeout(function() {
+                document.querySelectorAll('button[aria-label="In-progress competencies"]')[0].click();
+            }, 34000);
+        }
         if (document.location.pathname.indexOf('/sessionExpired') >= 0 || document.location.pathname.indexOf('/pageNotFound') >= 0) {
             document.location.href = 'https://ievolveng.ultimatix.net/ievolve/mandatorytrainings';
             //document.location.href = '../myLearnings/courses/inprogress';
@@ -58,8 +63,10 @@
                 document.location.href = 'https://ievolveng.ultimatix.net/ievolve/';
             }, 36000); // Exemplo: 3000 milisegundos em 3 segundos
         }
-        if (document.querySelectorAll('app-competency-details')[0].innerText == 'Competency not available') {
-            document.location.href = 'https://ievolveng.ultimatix.net/ievolve/';
+        if (document.querySelectorAll('app-competency-details').length > 0) {
+            if (document.querySelectorAll('app-competency-details')[0].innerText == 'Competency not available') {
+                document.location.href = 'https://ievolveng.ultimatix.net/ievolve/myLearnings/competencies/inprogress';
+            }
         }
         if (document.location.pathname.indexOf('/coursedetails/') >= 5) {
             setTimeout(function() {
@@ -126,7 +133,7 @@
 
         // Prova Agile
         if (document.querySelectorAll('div.numOfCrrctCol').length > 0) {
-            if (document.querySelectorAll('div.numOfCrrctCol')[0].innerText.length > 0) {
+            if (document.querySelectorAll('div.numOfCrrctCol')[0].ariaValueText.length > 0) {
                 if (document.querySelectorAll('div.numOfCrrctCol')[0].ariaValueText !== '') {
                     document.querySelectorAll('div.numOfCrrctCol')[0].innerText = '';
                     document.querySelectorAll('div.numOfCrrctCol')[0].innerText = document.querySelectorAll('div.numOfCrrctCol')[0].ariaValueText;
