@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PixLR Editor - Ads Removed
 // @namespace    http://www.sandroalvares.com.br
-// @version      0.37
+// @version      0.38
 // @description  PixLR Editor - Ads Removed + Free Save IMG
 // @author       Sandro Alvares
 // @match        http*://pixlr.com/br/e/*
@@ -20,28 +20,56 @@
         if (document.querySelector('section#top-bar ul#menu li')) {
             var myBodyIdx = document.querySelector('section#top-bar ul#menu');
             var newBaitTagx = document.createElement('li');
-            newBaitTagx.classList.add('sandro');
+            newBaitTagx.classList.add('sandro-png');
 
-            var newBaitTextx = document.createTextNode('FreeDownload-JPG');
+            var newBaitTextx = document.createTextNode('   FreeDownload-PNG   ');
             newBaitTagx.appendChild(newBaitTextx);
             myBodyIdx.appendChild(newBaitTagx);
 
             // Convert canvas to image
-            document.querySelector('section#top-bar ul#menu li.sandro').addEventListener("click", function(e) {
+            document.querySelector('section#top-bar ul#menu li.sandro-png').addEventListener("click", function(e) {
                 var canvas = document.querySelectorAll('canvas')[0];
-                var dataURL = canvas.toDataURL("image/jpeg", 1.0);
+                var dataURL = canvas.toDataURL("image/png", 1.0);
 
-                downloadImage(dataURL, 'my-canvas.jpeg');
+                downloadImage1(dataURL, 'my-canvas.png');
             });
 
-            // Save | Download image
-            function downloadImage(data, filename = 'untitled.jpeg') {
+            // Save PNG | Download image
+            function downloadImage1(data, filename = 'untitled.png') {
                 var a = document.createElement('a');
                 a.href = data;
                 a.download = filename;
                 document.body.appendChild(a);
                 a.click();
             }
+        }
+
+        if (document.querySelector('section#top-bar ul#menu li')) {
+            var myBodyIdx2 = document.querySelector('section#top-bar ul#menu');
+            var newBaitTagx2 = document.createElement('li');
+            newBaitTagx2.classList.add('sandro-jpg');
+
+            var newBaitTextx2 = document.createTextNode('   FreeDownload-JPG   ');
+            newBaitTagx2.appendChild(newBaitTextx2);
+            myBodyIdx2.appendChild(newBaitTagx2);
+
+            // Convert canvas to image
+            document.querySelector('section#top-bar ul#menu li.sandro-jpg').addEventListener("click", function(e) {
+                var canvas = document.querySelectorAll('canvas')[0];
+                var dataURL = canvas.toDataURL("image/jpg", 1.0);
+
+                downloadImage2(dataURL, 'my-canvas.jpg');
+            });
+
+            // Save PNG | Download image
+            function downloadImage2(data, filename = 'untitled.jpg') {
+                var a = document.createElement('a');
+                a.href = data;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+            }
+
             clearInterval(tempo1);
         }
 	}, 1000);
