@@ -8,3 +8,5 @@ https://addons.mozilla.org/pt-BR/firefox/addon/greasemonkey/
 
 TamperMonkey (Chrome):
 https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo
+TamperMonkey (Firefox):
+https://addons.mozilla.org/de/firefox/addon/tampermonkey/
