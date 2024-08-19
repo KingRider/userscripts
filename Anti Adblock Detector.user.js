@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Anti Adblock Detector
 // @namespace    http://sandroalvares.com.br
-// @version      0.60a
+// @version      0.60b
 // @description  So you can continue browsing ad-free
 // @author       KingRider
 
@@ -228,7 +228,7 @@
                     document.querySelectorAll('style[class*="mdpDeblocker"]')[mdp2].remove();
                 }
             }
-        }
+        //}
 
 
         function quebrascroll() {
@@ -246,7 +246,7 @@
         if (conta_anti >= 100) {
             clearInterval(tempo_anti);
             console.log('Terminado!');
-        }
+        };
         conta_anti++;
 
     }, 800);
