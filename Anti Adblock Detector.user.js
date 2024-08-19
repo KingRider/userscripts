@@ -1,24 +1,49 @@
 // ==UserScript==
 // @name         Anti Adblock Detector
 // @namespace    http://sandroalvares.com.br
-// @version      0.473
+// @version      0.60
 // @description  So you can continue browsing ad-free
 // @author       KingRider
 
-// @match        http*://*/*
+// @match        *://*/*
 
-// @exclude      http*://*.google.com/*
-// @exclude      http*://github.com/*
-// @exclude      http*://*.playplus.com/*
-// @exclude      http*://twitter.com/*
-// @exclude      http*://*.ultimatix.*/*
-// @exclude      http*://legacygames.com/*
-// @exclude      http*://xvideos.com/*
-// @exclude      http*://*.gov.br/*
-// @exclude      http*://*.adblockplus.org/*
-// @exclude      http*://*.alienwarearena.com/*
-// @exclude      http*://greasyfork.org/*
-// @exclude      http*://*.amazon.com*/*
+// @exclude      *://*.google.com/*
+// @exclude      *://github.com/*
+// @exclude      *://*.playplus.com/*
+// @exclude      *://twitter.com/*
+// @exclude      *://*.ultimatix.*/*
+// @exclude      *://legacygames.com/*
+// @exclude      *://xvideos.com/*
+// @exclude      *://*.gov.br/*
+// @exclude      *://*.adblockplus.org/*
+// @exclude      *://*.alienwarearena.com/*
+// @exclude      *://greasyfork.org/*
+// @exclude      *://*.amazon.com*/*
+// @exclude      *://*.shein.com*/*
+// @exclude      *://www.magazineluiza.com.br/*
+// @exclude      *://*.youtube.*/*
+// @exclude      *://happymod*.*/*
+// @exclude      *://sanet.*/*
+// @exclude      *://adguard.*/*
+// @exclude      *://meutim.tim.com.br/*
+// @exclude      *://*.nubank.com.br/*
+// @exclude      *://*.kaspersky.*
+// @exclude      *://tarisglobal.*
+// @exclude      *://steamcommunity.com/*
+// @exclude      *://rentry.org/*
+// @exclude      *://*.correios.com.br/*
+// @exclude      *://*.mercadolivre.com.br/*
+// @exclude      *://surfshark.com/*
+// @exclude      *://www.hardmob.com.br/threads/*
+// @exclude      *://www.facebook.com/messages/*
+// @exclude      *://x.com/*
+// @exclude      *://*.apdata.com.br/*
+// @exclude      *://shopee.com.br/*
+// @exclude      *://shopee.com/*
+// @exclude      *://*.steampowered.com/*
+// @exclude      *://*.twitch.tv/*
+// @exclude      *://*.ext-twitch.tv/*
+// @exclude      *://*.ttvnw.net/*
 
 // @grant        none
 
@@ -79,7 +104,7 @@
 */
 
         for (var adb4 = 0; adb4 < document.querySelectorAll('div').length; adb4++) {
-            if (document.querySelectorAll('div')[adb4]) {
+            if (document.querySelectorAll('div')[adb4] && !window.location.href.indexOf('wiki.fextralife.com') > 0) {
                 if (document.querySelectorAll('div')[adb4].innerText.toLowerCase().indexOf('adblock') > 0) {
                     document.querySelectorAll('div')[adb4].style.display = 'none';
                     console.log('adb4');
@@ -87,7 +112,7 @@
                 }
             }
             if (document.querySelectorAll('div')[adb4]) {
-                if (document.querySelectorAll('div')[adb4].innerText.toLowerCase().indexOf('bloqueador') > 0) {
+                if (document.querySelectorAll('div')[adb4].innerText.toLowerCase().indexOf('detectado') > 0) {
                     document.querySelectorAll('div')[adb4].style.display = 'none';
                     console.log('adb5');
                     quebrascroll();
@@ -104,6 +129,18 @@
             }
         }
 
+        // Wiki Fextralife .com
+        if (window.location.href.indexOf('wiki.fextralife.com') > 0) {
+            if (document.querySelector('form[action="/ws/authentication/logout"]')) {
+                if (document.querySelector('form[action="/ws/authentication/logout"]').style.height != '100px') {
+                    document.querySelector('form[action="/ws/authentication/logout"]').style.height = '100px';
+                }
+            }
+            if (document.querySelector('div.fex-main div#wrapper').style.paddingLeft == '') {
+                document.querySelector('div.fex-main div#wrapper').style.paddingLeft = 0;
+            }
+        }
+
         // Project mdpDeblocker (não utilize youtube.com)
         if (window.location.href.indexOf('youtube.com') == "-1") {
 
@@ -113,19 +150,15 @@
             document.body.style.filter = '';
             document.body.style.webkitFilter = '';
             for (var sscript = 0; document.querySelectorAll('script').length > sscript; sscript++) {
-                if (document.querySelectorAll('script')[sscript]) {
+                if (typeof(document.querySelectorAll('script')[sscript]).innerText != 'undefined') {
                     if (document.querySelectorAll('script')[sscript].innerText.toLowerCase().indexOf('anti-adblock') > 0) {
                         console.log('sscript1');
                         document.querySelectorAll('script')[sscript].remove();
                     }
-                }
-                if (document.querySelectorAll('script')[sscript]) {
                     if (document.querySelectorAll('script')[sscript].innerText.toLowerCase().indexOf('|adblock') > 0) {
                         console.log('sscript2');
                         document.querySelectorAll('script')[sscript].remove();
                     }
-                }
-                if (document.querySelectorAll('script')[sscript]) {
                     if (document.querySelectorAll('script')[sscript].innerText.toLowerCase().indexOf('blocker') > 0) {
                         console.log('sscript3');
                         document.querySelectorAll('script')[sscript].remove();
@@ -133,14 +166,16 @@
                 }
             }
             for (var sstyle = 0; document.querySelectorAll('style').length > sstyle; sstyle++) {
-                if (document.querySelectorAll('style')[sstyle].innerText.toLowerCase().indexOf('anti-adblock') > 0) {
-                    console.log('sstyle1', sstyle);
-                    document.querySelectorAll('style')[sstyle].remove();
-                }
-                if (document.querySelectorAll('style')[sstyle].innerText.toLowerCase().indexOf('blur') > 0) {
-                    console.log('sstyle2', sstyle);
-                    document.querySelectorAll('style')[sstyle].innerText = document.querySelectorAll('style')[sstyle].innerText.replaceAll('blur', 'xlur');
-                    //document.querySelectorAll('style')[sstyle].remove();
+                if (typeof(document.querySelectorAll('style')[sstyle]).innerText != 'undefined') {
+                    if (document.querySelectorAll('style')[sstyle].innerText.toLowerCase().indexOf('anti-adblock') > 0) {
+                        console.log('sstyle1', sstyle);
+                        document.querySelectorAll('style')[sstyle].remove();
+                    }
+                    if (document.querySelectorAll('style')[sstyle].innerText.toLowerCase().indexOf('blur') > 0) {
+                        console.log('sstyle2', sstyle);
+                        document.querySelectorAll('style')[sstyle].innerText = document.querySelectorAll('style')[sstyle].innerText.replaceAll('blur', 'xlur');
+                        //document.querySelectorAll('style')[sstyle].remove();
+                    }
                 }
             }
             for (var blur = 0; document.querySelectorAll('div').length > blur; blur++) {
