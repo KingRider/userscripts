@@ -4,10 +4,15 @@
 // @version      0.7
 // @description  A basic anti-adblock workaround that can remove or click elements on a website
 // @author       DerFichtl, with major improvements by Firepup650
+
 // @match        https://*/*
 // @icon         https://getadblock.com/favicon.ico
-// @grant        none
+
+// @updateURL     https://github.com/KingRider/userscripts/raw/master/mf-adblock.js
+// @downloadURL   https://github.com/KingRider/userscripts/raw/master/mf-adblock.js
+
 // @noframes
+// @grant        none
 // ==/UserScript==
 
 (function() {
