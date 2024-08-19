@@ -1,11 +1,14 @@
 // ==UserScript==
 // @name         Mostrar a senha F8
 // @namespace    http://sandroalvares.com.br
-// @version      2.41
+// @version      2.43
 // @description  Mostrar a senha para alerta
 // @author       KingRider
-// @match        http*://*/*
-// @exclude      http*://*.google.com/*
+// @match        *://*/*
+// @exclude      *://*.google.com/*
+// @exclude      *://*.twitch.tv/*
+// @exclude      *://*.ext-twitch.tv/*
+// @exclude      *://*.ttvnw.net/*
 // @grant        none
 
 // @updateURL     https://github.com/KingRider/userscripts/raw/master/Mostrar%20a%20senha%20F8.user.js
