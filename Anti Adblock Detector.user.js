@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Anti Adblock Detector
 // @namespace    http://sandroalvares.com.br
-// @version      0.61a
+// @version      0.62
 // @description  So you can continue browsing ad-free
 // @author       KingRider
 
@@ -63,6 +63,35 @@
     var conta_anti = 0;
     var tempo_anti = setInterval(function() {
 
+
+        for (var adb4 = 0; adb4 < document.querySelectorAll('div').length; adb4++) {
+            if (document.querySelectorAll('div')[adb4] && !window.location.href.indexOf('wiki.fextralife.com') > 0) {
+                if (document.querySelectorAll('div')[adb4].innerText.toLowerCase().indexOf('adblock') > 0) {
+                    document.querySelectorAll('div')[adb4].style.display = 'none';
+                    console.log('adb4');
+                    quebrascroll();
+                }
+            }
+            if (document.querySelectorAll('div')[adb4]) {
+                if (document.querySelectorAll('div')[adb4].innerText.toLowerCase().indexOf('detectado') > 0) {
+                    document.querySelectorAll('div')[adb4].style.display = 'none';
+                    console.log('adb5');
+                    quebrascroll();
+                }
+            }
+        }
+
+        for (var adb6 = 0; adb6 < document.querySelectorAll('[id*="adblock"]').length; adb6++) {
+            if (document.querySelectorAll('[id*="adblock"]')[adb6]) {
+                document.querySelectorAll('[id*="adblock"]')[adb6].style.display = 'none';
+                document.querySelectorAll('[id*="adblock"]')[adb6].parentElement.style.display = 'initial';
+                console.log('adb6');
+                quebrascroll();
+            }
+        }
+
+        // ================================================== || ==================================================
+
         // TVfree
         if (window.location.href.indexOf('tvfree') > 0) {
             for (var adb1 = 0; adb1 < document.querySelectorAll('h3').length; adb1++) {
@@ -102,28 +131,11 @@
         }
 */
 
-        for (var adb4 = 0; adb4 < document.querySelectorAll('div').length; adb4++) {
-            if (document.querySelectorAll('div')[adb4] && !window.location.href.indexOf('wiki.fextralife.com') > 0) {
-                if (document.querySelectorAll('div')[adb4].innerText.toLowerCase().indexOf('adblock') > 0) {
-                    document.querySelectorAll('div')[adb4].style.display = 'none';
-                    console.log('adb4');
-                    quebrascroll();
-                }
-            }
-            if (document.querySelectorAll('div')[adb4]) {
-                if (document.querySelectorAll('div')[adb4].innerText.toLowerCase().indexOf('detectado') > 0) {
-                    document.querySelectorAll('div')[adb4].style.display = 'none';
-                    console.log('adb5');
-                    quebrascroll();
-                }
-            }
-        }
-
         // Youtube.com
         // only remove popup
         // use extension for block ads: https://chrome.google.com/webstore/detail/gighmmpiobklfepjocnamgkkbiglidom
         if (window.location.href.indexOf('youtube.com') > 0) {
-            for (ytad = 0; document.getElementsByClassName('ytd-popup-container').length; ytad++) {
+            for (var ytad = 0; document.getElementsByClassName('ytd-popup-container').length; ytad++) {
                 document.getElementsByClassName('ytd-popup-container')[ytad].style.display = 'none';
             }
         }
@@ -206,8 +218,8 @@
                 console.log('ads');
                 document.querySelectorAll('[id*="ads-"]')[ads].remove();
             }
-        }
         */
+        }
             /*
         if (document.querySelector('style#mdpDeblocker-css')) {
             console.log('style#mdp');
@@ -241,10 +253,11 @@
             document.onkeydown=function(){return true};
         }
 
-        if (conta_anti >= 100) {
+        if (conta_anti >= 20) {
             clearInterval(tempo_anti);
             console.log('Terminado!');
         };
+        console.log(conta_anti);
         conta_anti++;
 
     }, 800);
