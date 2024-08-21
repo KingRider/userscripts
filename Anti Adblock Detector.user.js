@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Anti Adblock Detector
 // @namespace    http://sandroalvares.com.br
-// @version      0.60b
+// @version      0.61a
 // @description  So you can continue browsing ad-free
 // @author       KingRider
 
@@ -120,15 +120,13 @@
         }
 
         // Youtube.com
-        /* error popup
+        // only remove popup
+        // use extension for block ads: https://chrome.google.com/webstore/detail/gighmmpiobklfepjocnamgkkbiglidom
         if (window.location.href.indexOf('youtube.com') > 0) {
-            if (document.getElementsByClassName("style-scope ytd-popup-container").length >= 0) {
-                if (document.getElementsByClassName("style-scope ytd-popup-container")[0].style.length >= 1) {
-                    document.getElementsByClassName("style-scope ytd-popup-container")[0].remove();
-                }
+            for (ytad = 0; document.getElementsByClassName('ytd-popup-container').length; ytad++) {
+                document.getElementsByClassName('ytd-popup-container')[ytad].style.display = 'none';
             }
         }
-        *
 
         // Wiki Fextralife .com
         if (window.location.href.indexOf('wiki.fextralife.com') > 0) {
