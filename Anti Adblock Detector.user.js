@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Anti Adblock Detector
 // @namespace    http://sandroalvares.com.br
-// @version      0.62
+// @version      0.62a
 // @description  So you can continue browsing ad-free
 // @author       KingRider
 
@@ -133,10 +133,13 @@
 
         // Youtube.com
         // only remove popup
-        // use extension for block ads: https://chrome.google.com/webstore/detail/gighmmpiobklfepjocnamgkkbiglidom
+        // use extension for block ads: 
+        // 1º - https://chrome.google.com/webstore/detail/gighmmpiobklfepjocnamgkkbiglidom
+        // 2º - https://chrome.google.com/webstore/detail/cjpalhdlnbpafiamejdnhcphjbkeiagm
         if (window.location.href.indexOf('youtube.com') > 0) {
             for (var ytad = 0; document.getElementsByClassName('ytd-popup-container').length; ytad++) {
                 document.getElementsByClassName('ytd-popup-container')[ytad].style.display = 'none';
+                console.log('ytd-popup');
             }
         }
 
@@ -253,7 +256,7 @@
             document.onkeydown=function(){return true};
         }
 
-        if (conta_anti >= 20) {
+        if (conta_anti >= 10) {
             clearInterval(tempo_anti);
             console.log('Terminado!');
         };
