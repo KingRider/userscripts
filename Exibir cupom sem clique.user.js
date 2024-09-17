@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Exibir cupom sem clique
 // @namespace    http://sandroalvares.com.br
-// @version      0.7
+// @version      0.8
 // @description  Menos clique e menos popup e muito menos propaganda
 // @author       Sandro Alvares
 // @match        http*://*.cuponomia.com.br/*
@@ -49,17 +49,14 @@
 
         //--------------------------------------------
         // Pelando.com.br
-        /* error
-        for (z=0; z < document.querySelectorAll('a[rel="noopener nofollow"]').length; z++) {
-            document.querySelectorAll('span[role="presentation"]')[z].parentElement.parentNode.append(document.querySelectorAll('span[role="presentation"]')[z].getAttribute('data-masked'));
+        for (var pelando=0; pelando < document.querySelectorAll('span[role="presentation"]').length; pelando++) {
+            document.querySelectorAll('span[role="presentation"]')[pelando].parentElement.parentNode.append(document.querySelectorAll('span[role="presentation"]')[pelando].getAttribute('data-masked'));
         }
-        */
         /*
         for (y=0; y < document.querySelectorAll('span.item\-promo\-link.item-cover').length; y++) {
             document.querySelectorAll('span.item\-promo\-link.item-cover')[y].style.display = "none";
         }
-        */
-        /* novo */
+        /*
         for (var y2=0; y2 < document.querySelectorAll('button span').length; y2++) {
             if (document.querySelectorAll('button span')[y2].nextSibling) {
                 if (document.querySelectorAll('button span')[y2].nextSibling.masked) {
@@ -70,6 +67,7 @@
                 }
             }
         }
+        */
 
         //--------------------------------------------
         // thiagorodrigo.com.br
@@ -80,7 +78,7 @@
         //--------------------------------------------
         // Meliuz.com.br
         for (var meliuz = 0; meliuz < document.querySelectorAll('button span').length; meliuz++) {
-            if (document.querySelectorAll('button span')[meliuz].className == "partner-pg__code-button__value") {
+            if (document.querySelectorAll('button span')[meliuz].className == "code-btn__value") {
                 document.querySelectorAll('button span')[meliuz].parentElement.parentElement.parentElement.append(document.querySelectorAll('button span')[meliuz].textContent);
             }
         }
