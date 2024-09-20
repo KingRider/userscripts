@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Mostrar a senha F8
 // @namespace    http://sandroalvares.com.br
-// @version      2.43
+// @version      2.5
 // @description  Mostrar a senha para alerta
 // @author       KingRider
 // @match        *://*/*
@@ -23,39 +23,13 @@
             document.onkeyup = function(event) {
                 if (event.key == "F2" || event.keyCode == 119){ // https://keycode.info/
                     if (document.querySelectorAll('input[type=password]').length > 0) {
-                        var x = 0, conta = 1; var texto = "";
-                        for (x=0; x < document.querySelectorAll('input[type=password]').length; x++) {
-                            document.querySelectorAll('input[type=password]')[x].type = 'senha';
-                            /*
-                            if (document.querySelectorAll('input[type=password]')[x].value != "") {
-                                texto += (conta)+"º) "+document.querySelectorAll('input[type=password]')[x].value+"\r\n";
-                                conta++;
+                        for (var x=0; x < document.querySelectorAll('input[type=password]').length; x++) {
+                            //document.querySelectorAll('input[type=password]')[x].type = 'senha';
+                            if (document.querySelectorAll('input[type=password]')[x].getAttribute('type') == 'password') {
+                                document.querySelectorAll('input[type=password]')[x].setAttribute('type', 'text');
                             }
-                            */
                         }
-                        /*
-                        var ativado = setInterval(function() {
-                        */
-                            if (document.querySelector('input[type="password"]').getAttribute('type') == 'password') {
-                                document.querySelector('input[type="password"]').setAttribute('type','text');
-                            }
-                        /*
-                            if (document.querySelector('input[type="password"]').getAttribute('type') == 'text') {
-                                clearInterval(ativado);
-                            }
-                        }, 1500);
-                        */
-                        //alert(texto);
                         clearInterval(tempof8);
-                        /*
-                    if (document.querySelectorAll('input[type=password]').length==1) {
-                        alert(document.querySelectorAll('input[type=password]')[0].value);
-                    } else {
-                        if (document.querySelectorAll('input[type=password]').length>1 || document.querySelectorAll('input[type=password]').length!=0) {
-                            alert("Tem mais campo da senha são "+document.querySelectorAll('input[type=password]').length);
-                        }
-                    }
-                    */
                     }
                 }
             }
