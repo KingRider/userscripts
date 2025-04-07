@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Exibir cupom sem clique
 // @namespace    http://sandroalvares.com.br
-// @version      0.8
+// @version      v0.9
 // @description  Menos clique e menos popup e muito menos propaganda
 // @author       Sandro Alvares
 // @match        http*://*.cuponomia.com.br/*
@@ -23,27 +23,15 @@
 
         //--------------------------------------------
         // Cuponomia.com.br
-        var x,y,z;
-        for (x=0; x < document.querySelectorAll('li.item-code').length; x++) {
-            //if (!typeof document.querySelectorAll('li.item-code div.item-code span span:last-child')) {
-                //$('li.item-code')[x].append($('li.item-code div.item-code span span:last-child')[x].innerText);
-                // -- document.querySelectorAll('li.item-code div.smallTitle.is-code')[x].append(document.querySelectorAll('li.item-code div.item-code span span:last-child')[x].innerText);
-                document.querySelectorAll('li.item-code div.smallTitle.is-code')[x].append(document.querySelectorAll('span.item-code-link')[x].textContent);
-                //document.querySelectorAll('li.item-code div.smallTitle.is-code')[x].style.background = "yellow";
-            //} else {
-            //    $('li.item-code')[x].remove();
-            //}
-            /*else {
-                document.querySelectorAll('li.item-code')[x].append($('li.item-code div.item-code span span:last-child')[x].innerText);
-            }*/
-            //$('div.item-promo.item-code').hide();
-            //$('li.get-container').hide();
-            //$('li.item-sale').hide();
+        for (var x=0; x < document.querySelectorAll('li.item-code').length; x++) {
+            const cupom = document.querySelectorAll('span.item-code-link')[x].textContent;
+            document.querySelectorAll('li.item-code')[x].append( cupom );
+            document.querySelectorAll('li.item-code h3')[x].style.height = '50px';
         }
 
         //--------------------------------------------
         // Radarcupom.com.br
-        for (y=0; y < document.querySelectorAll('span.coupon-button').length; y++) {
+        for (var y=0; y < document.querySelectorAll('span.coupon-button').length; y++) {
             document.querySelectorAll('span.coupon-button')[y].remove();
         }
 
